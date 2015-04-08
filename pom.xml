@@ -6,8 +6,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>../monitor-ws</module>
-        <module>../monitor-war</module>
+        <module>monitor-ws</module>
+        <module>monitor-war</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
