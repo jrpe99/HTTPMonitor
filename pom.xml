@@ -5,12 +5,14 @@
     <artifactId>monitor</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>monitor</name>
+
     <modules>
         <module>monitor-ws</module>
         <module>monitor-war</module>
     </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <name>monitor</name>
 </project>
