@@ -15,4 +15,22 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>dk.jrpe.monitor</groupId>
+                <artifactId>monitor-war</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+        
+            <dependency>
+                <groupId>dk.jrpe.monitor</groupId>
+                <artifactId>monitor-ws</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>        
 </project>

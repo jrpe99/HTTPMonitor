@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:schema="http://jrpe.dk/httpaccessdata/schemas"
+                  xmlns:jp="http://jrpe.dk/httpaccessdata/definitions"
+                  targetNamespace="http://jrpe.dk/httpaccessdata/definitions">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://jrpe.dk/httpaccessdata/schemas" schemaLocation="HTTPAccessData.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    
+    <wsdl:message name="HTTPAccessDataRequest"> 
+        <wsdl:part name="HTTPAccessDataRequest" element="schema:HTTPAccessDataRequest"/>
+    </wsdl:message>
+    
+    <wsdl:portType name="HTTPAccessDataPortType">
+        <wsdl:operation name="sendHTTPAccessData">
+            <wsdl:input message="jp:HTTPAccessDataRequest" name="HTTPAccessDataRequest"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    
+    <wsdl:binding name="HTTPAccessDataBinding" type="jp:HTTPAccessDataPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sendHTTPAccessData">
+            <soap:operation soapAction="http://jrpe.dk/httpaccessdata/sendHTTPAccessData"/>
+            <wsdl:input name="HTTPAccessDataRequest">
+                <soap:body use="literal" parts="HTTPAccessDataRequest"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    
+    <wsdl:service name="HTTPAccessDataService">
+        <wsdl:port name="HTTPAccessDataPort" binding="jp:HTTPAccessDataBinding">
+            <soap:address location="http://localhost:8080/monitor-ws/httpaccessdata"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>    
