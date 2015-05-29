@@ -33,8 +33,8 @@ public class WebSocketHelper {
         try {
             System.out.println("Send to session : " + session.getId());
             System.out.println("Message : " + json);
-            session.getBasicRemote().sendObject(json);
-        } catch (IOException | EncodeException ex) {
+            session.getBasicRemote().sendText(json);
+        } catch (IOException ex) {
             Logger.getLogger(WebSocketHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
