@@ -10,5 +10,5 @@ Working environment
 Build/Deploy
 - mvn clean install
 - cd monitor-war
-- mvn tomacat7:redeploy
+- mvn tomcat7:redeploy
 
