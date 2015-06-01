@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <wsdl:definitions 
-	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://generated.endpoint.webservice.monitor.jrpe.dk/"
 	targetNamespace="http://generated.endpoint.webservice.monitor.jrpe.dk/">
