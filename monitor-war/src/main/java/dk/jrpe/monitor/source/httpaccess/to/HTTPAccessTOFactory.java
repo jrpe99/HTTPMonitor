@@ -2,6 +2,8 @@ package dk.jrpe.monitor.source.httpaccess.to;
 
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import dk.jrpe.monitor.source.httpaccess.simulate.SimulationConstants;
+import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessData;
+
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -15,6 +17,19 @@ public class HTTPAccessTOFactory {
     private HTTPAccessTOFactory() {
     }
 
+    public static HTTPAccessData createSimulated(HTTPAccessTO to) {
+    	HTTPAccessData httpAccessData = new HTTPAccessData();
+    	httpAccessData.setAction(to.getAction());
+    	httpAccessData.setDate(to.getDate());
+    	httpAccessData.setDateTime(to.getDateTime());
+    	httpAccessData.setDateToMinute(to.getDateToMinute());
+    	httpAccessData.setHttpStatus(to.getHttpStatus());
+    	httpAccessData.setIpAddress(to.getIpAddress());
+    	httpAccessData.setRequests(to.getRequests());
+    	httpAccessData.setUrl(to.getUrl());
+    	return httpAccessData;
+    }
+    
     public static HTTPAccessTO createSimulated() {
         Random random = new Random();
         int index = random.nextInt(SimulationConstants.HTTP_STATUS_LIST.size());

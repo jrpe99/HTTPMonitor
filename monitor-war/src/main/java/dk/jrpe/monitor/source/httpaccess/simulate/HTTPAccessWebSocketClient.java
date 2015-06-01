@@ -10,37 +10,23 @@ import dk.jrpe.monitor.db.httpaccess.to.JsonHTTPAccessTO;
 import dk.jrpe.monitor.json.JSONMapper;
 import dk.jrpe.monitor.service.command.CommandHandler;
 import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
+import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessData;
+import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataPort;
+import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataService;
 import dk.jrpe.monitor.websocket.client.WebsocketClientEndpoint;
+
 import java.net.URI;
+import java.net.URL;
 
-public class HTTPAccessSimulator {
-    private final DataSource dataSource = DataSourceFactory.getDefault();
-    public static void main(String[] args) {
-        new HTTPAccessSimulator().simulateWithMonitorServer();
-    }
-
-    public void simulateWithCassandra() {
-        this.dataSource.open();
-        try (DataSource localDataSource = this.dataSource;) {
-            Random random = new Random();
-            HTTPAccessDAO httpAccessDAO = new HTTPAccessDAO(localDataSource);
-            while(true) {
-                httpAccessDAO.saveAndUpdate(HTTPAccessTOFactory.createSimulated());
-                
-                int sleepTime = random.nextInt(500);
-                try {
-                    Thread.sleep(sleepTime);
-                } catch (InterruptedException e) {
-                }
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-    }
+public class HTTPAccessWebSocketClient {
     
-    public void simulateWithMonitorServer() {
+	public static void main(String[] args) {
+        new HTTPAccessWebSocketClient().simulateWithWebsocket();
+    }
+
+    public void simulateWithWebsocket() {
         try {
-            WebsocketClientEndpoint client = new WebsocketClientEndpoint(new URI("ws://localhost:8080/monitor-war/monitor"));
+            WebsocketClientEndpoint client = new WebsocketClientEndpoint(new URI("ws://localhost:8080/monitor/monitor"));
             Random random = new Random();
             while (true) {
                 HTTPAccessTO to = HTTPAccessTOFactory.createSimulated();

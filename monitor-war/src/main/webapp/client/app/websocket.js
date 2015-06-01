@@ -12,7 +12,7 @@ function initWebSocket() {
 
     var uri = "ws://localhost:8080";
     var graph;
-    var wsUri = uri + "/monitor-war/monitor";
+    var wsUri = uri + "/monitor/monitor";
     websocket = new WebSocket(wsUri);
 
     websocket.onopen = function(evt) {

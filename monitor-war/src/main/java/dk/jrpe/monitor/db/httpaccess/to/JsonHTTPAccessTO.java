@@ -1,5 +1,7 @@
 package dk.jrpe.monitor.db.httpaccess.to;
 
+import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessData;
+
 /**
  * @author Jörgen Persson
  */
@@ -27,6 +29,18 @@ public class JsonHTTPAccessTO {
         this.action = to.getAction();
         this.url = to.getUrl();
         this.requests = to.getRequests();
+    }
+    
+    public JsonHTTPAccessTO(HTTPAccessData data) {
+        this.command = data.getCommand();
+        this.httpStatus = data.getHttpStatus();
+        this.ipAddress = data.getIpAddress();
+        this.date = data.getDate();
+        this.dateToMinute = data.getDateToMinute();
+        this.dateTime = data.getDateTime();
+        this.action = data.getAction();
+        this.url = data.getUrl();
+        this.requests = data.getRequests();
     }
     
     public String getCommand() {
