@@ -1,4 +1,4 @@
-# Cassandra - HTTP Access monitor
+# HTTP Access monitor
 
 Working environment
 - Java jdk1.8.0_45
@@ -6,4 +6,9 @@ Working environment
 -- Version: Luna Service Release 2 (4.4.2)
 -- Build id: 20150219-0600
 - Tomcat - apache-tomcat-8.0.23-windows-x64
+
+Build/Deploy
+- mvn clean install
+- cd monitor-war
+- mvn tomacat7:redeploy
 
