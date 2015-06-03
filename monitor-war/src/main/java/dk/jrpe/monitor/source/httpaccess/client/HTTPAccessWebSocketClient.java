@@ -9,7 +9,7 @@ import dk.jrpe.monitor.json.JSONMapper;
 import dk.jrpe.monitor.source.httpaccess.simulate.HTTPAccessTOFactory;
 import dk.jrpe.monitor.websocket.client.WebsocketClientEndpoint;
 
-public class HTTPAccessWebSocketClient {
+public class HTTPAccessWebSocketClient extends HTTPAccessWebClient {
 
     private final WebsocketClientEndpoint client;
     

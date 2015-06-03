@@ -10,18 +10,18 @@ import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
-import dk.jrpe.monitor.source.httpaccess.simulate.HTTPAccessSimulatorWebSocketClient;
+import dk.jrpe.monitor.source.httpaccess.client.HTTPAccessWebSocketClient;
 
 @SuppressWarnings("serial")
 public class HTTPAccessWebSocketBolt extends BaseRichBolt {
     private OutputCollector collector;
-    private HTTPAccessSimulatorWebSocketClient client;
+    private HTTPAccessWebSocketClient client;
     
     @SuppressWarnings("rawtypes")
     public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
         this.collector = collector;
         try {
-			this.client = new HTTPAccessSimulatorWebSocketClient();
+			this.client = new HTTPAccessWebSocketClient();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
