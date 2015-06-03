@@ -5,7 +5,6 @@ import java.util.Random;
 import dk.jrpe.monitor.db.cassandra.dao.httpaccess.HTTPAccessDAO;
 import dk.jrpe.monitor.db.datasource.DataSource;
 import dk.jrpe.monitor.db.datasource.DataSourceFactory;
-import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
 
 public class HTTPAccessCassandraClient {
     private final DataSource dataSource = DataSourceFactory.getDefault();

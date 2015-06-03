@@ -1,7 +1,6 @@
-package dk.jrpe.monitor.source.httpaccess.to;
+package dk.jrpe.monitor.source.httpaccess.simulate;
 
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
-import dk.jrpe.monitor.source.httpaccess.simulate.SimulationConstants;
 import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessData;
 
 import java.time.ZonedDateTime;
@@ -10,14 +9,14 @@ import java.util.Random;
 
 /**
  *
- * @author jorperss
+ * @author Jörgen Persson
  */
 public class HTTPAccessTOFactory {
 
     private HTTPAccessTOFactory() {
     }
 
-    public static HTTPAccessData createSimulated(HTTPAccessTO to) {
+    public static HTTPAccessData createSimulatedForCXF(HTTPAccessTO to) {
     	HTTPAccessData httpAccessData = new HTTPAccessData();
     	httpAccessData.setAction(to.getAction());
     	httpAccessData.setDate(to.getDate());

@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.Random;
 
 import dk.jrpe.monitor.service.command.CommandHandler;
-import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
 import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessData;
 import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataPort;
 import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataService;
@@ -21,7 +20,7 @@ public class HTTPAccessWebServiceClient {
             HTTPAccessDataPort httpAccessDataPort = new HTTPAccessDataService(wsdlURL).getHTTPAccessDataPort();
             Random random = new Random();
             while (true) {
-            	HTTPAccessData data = HTTPAccessTOFactory.createSimulated(HTTPAccessTOFactory.createSimulated());
+            	HTTPAccessData data = HTTPAccessTOFactory.createSimulatedForCXF(HTTPAccessTOFactory.createSimulated());
             	
                 if (data.getHttpStatus().equals("200")) {
                 	data.setCommand(CommandHandler.CommandEnum.SEND_HTTP_SUCCESS_DATA.toString());

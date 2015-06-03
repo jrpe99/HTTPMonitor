@@ -9,7 +9,6 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import dk.jrpe.monitor.db.httpaccess.to.JsonHTTPAccessTO;
 import dk.jrpe.monitor.json.JSONMapper;
 import dk.jrpe.monitor.service.command.CommandHandler;
-import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
 import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessData;
 import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataPort;
 import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataService;
