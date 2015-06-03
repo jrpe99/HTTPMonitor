@@ -45,6 +45,7 @@ public class HTTPAccessTOFactory {
     
     public static JsonHTTPAccessTO convertToJsonTo(HTTPAccessData to) {
     	JsonHTTPAccessTO jsonHTTPAccessTO = new JsonHTTPAccessTO();
+    	jsonHTTPAccessTO.setCommand(to.getCommand());
     	jsonHTTPAccessTO.setAction(to.getAction());
     	jsonHTTPAccessTO.setDate(to.getDate());
     	jsonHTTPAccessTO.setDateTime(to.getDate());
