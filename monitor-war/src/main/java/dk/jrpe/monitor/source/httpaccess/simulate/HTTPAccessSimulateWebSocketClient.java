@@ -13,7 +13,7 @@ public class HTTPAccessSimulateWebSocketClient {
         	HTTPAccessWebSocketClient client = new HTTPAccessWebSocketClient();
         	Random random = new Random();
             while (true) {
-            	HTTPAccessTO data = HTTPAccessTOFactory.create();
+            	HTTPAccessTO data = HTTPAccessTOFactory.createSimulated();
             	
                 if (data.getHttpStatus().equals("200")) {
                 	client.sendToServer(data, CommandHandler.CommandEnum.SEND_HTTP_SUCCESS_DATA.toString());

@@ -11,20 +11,19 @@ import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
-import dk.jrpe.monitor.source.httpaccess.client.HTTPAccessCXFWebServiceClient;
+import dk.jrpe.monitor.source.httpaccess.simulate.HTTPAccessSimulatorCXFWebServiceClient;
 
 @SuppressWarnings("serial")
 public class HTTPAccessCXFWebServiceBolt extends BaseRichBolt {
     private OutputCollector collector;
-    private HTTPAccessCXFWebServiceClient client;
+    private HTTPAccessSimulatorCXFWebServiceClient client;
     
     @SuppressWarnings("rawtypes")
     public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
         this.collector = collector;
         try {
-			this.client = new HTTPAccessCXFWebServiceClient();
+			this.client = new HTTPAccessSimulatorCXFWebServiceClient();
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
@@ -34,8 +33,11 @@ public class HTTPAccessCXFWebServiceBolt extends BaseRichBolt {
         List<Object> values = tuple.getValues();
         values.stream().map((value) -> (HTTPAccessTO)value).forEach((to) -> {
             System.out.println("BOLT Thread : " + Thread.currentThread().getName() + " process HTTP Access IP: " + to.getIpAddress());
-            //this.client.sendToServer(to, command);
-            //httpAccessDAO.saveAndUpdate(to);
+            try {
+				this.client.sendToServer(to);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
         });
         collector.ack(tuple);
     }

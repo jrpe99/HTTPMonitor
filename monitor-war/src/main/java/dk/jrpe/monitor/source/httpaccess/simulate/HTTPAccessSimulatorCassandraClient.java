@@ -10,7 +10,7 @@ public class HTTPAccessSimulatorCassandraClient {
             Random random = new Random();
             HTTPAccessCassandraClient client = new HTTPAccessCassandraClient();
             while(true) {
-                client.sendToServer(HTTPAccessTOFactory.create());
+                client.sendToServer(HTTPAccessTOFactory.createSimulated());
                 
                 int sleepTime = random.nextInt(500);
                 try {

@@ -70,7 +70,7 @@ public class HTTPAccessTOFactory {
 	        .build();    	
     }
     
-    public static HTTPAccessTO create() {
+    public static HTTPAccessTO createSimulated() {
         Random random = new Random();
         int index = random.nextInt(SimulationConstants.HTTP_STATUS_LIST.size());
         String httpStatus = SimulationConstants.HTTP_STATUS_LIST.get(index);
