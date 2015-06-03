@@ -16,6 +16,8 @@ function initWebSocket() {
     websocket = new WebSocket(wsUri);
 
     websocket.onopen = function(evt) {
+        var json = '{"command":"CHART_SUBSCRIPTION", "chartSubscription":["LINE_SUCCESS_AND_FAILED"]}';
+        websocket.send(json);
     };
     websocket.onmessage = function(evt) {
         var json = JSON.parse(evt.data);
