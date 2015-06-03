@@ -21,8 +21,8 @@ public class WebSocketHelper {
     public static void sendChartListToAll(List<Session> sessionList, final ChartEnum ... chartList) {
         if(sessionList.size() > 0) {
             sessionList.stream().forEach((session) -> {
+                EnumSet chartSubscription = (EnumSet)session.getUserProperties().get(MonitorConstant.CHART_SUBSCRIPTION);
                 for (ChartEnum chart : chartList) {
-                    EnumSet chartSubscription = (EnumSet)session.getUserProperties().get(MonitorConstant.CHART_SUBSCRIPTION);
                     if(chartSubscription != null && chartSubscription.contains(chart)) {
                         WebSocketHelper.send(session, chart.getJson());
                     }
