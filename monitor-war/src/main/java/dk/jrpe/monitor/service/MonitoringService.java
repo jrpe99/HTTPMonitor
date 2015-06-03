@@ -21,7 +21,7 @@ import javax.websocket.Session;
  * 
  * The service is a Singelton. It is responsible for creating monitor tasks,
  * which are added to a monitor task list. When all tasks have been added
- * they are scheduled (started) using a Timer.
+ * they are scheduled (started) using a ScheduledExecutorService.
  * 
  * @author Jörgen Persson
  */
