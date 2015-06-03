@@ -19,7 +19,7 @@ public class HTTPAccessCXFWebServiceClient {
 	}
 
 	public void sendToServer(HTTPAccessTO to, String command) throws Exception {
-    	HTTPAccessData data = HTTPAccessTOFactory.createSimulatedForCXF(to);
+    	HTTPAccessData data = HTTPAccessTOFactory.convertToCXFObject(to);
     	data.setCommand(command);
     	httpAccessDataPort.sendHTTPAccessData(data);
 	}

@@ -17,7 +17,7 @@ public class HTTPAccessTOFactory {
     private HTTPAccessTOFactory() {
     }
 
-    public static HTTPAccessData createSimulatedForCXF(HTTPAccessTO to) {
+    public static HTTPAccessData convertToCXFObject(HTTPAccessTO to) {
     	HTTPAccessData httpAccessData = new HTTPAccessData();
     	httpAccessData.setAction(to.getAction());
     	httpAccessData.setDate(to.getDate());
@@ -30,11 +30,46 @@ public class HTTPAccessTOFactory {
     	return httpAccessData;
     }
     
-    public static JsonHTTPAccessTO createSimulatedForJSON(HTTPAccessTO to) {
-    	return new JsonHTTPAccessTO(to);
+    public static JsonHTTPAccessTO convertToJsonTo(HTTPAccessTO to) {
+    	JsonHTTPAccessTO jsonHTTPAccessTO = new JsonHTTPAccessTO();
+    	jsonHTTPAccessTO.setAction(to.getAction());
+    	jsonHTTPAccessTO.setDate(to.getDate());
+    	jsonHTTPAccessTO.setDateTime(to.getDate());
+    	jsonHTTPAccessTO.setDateToMinute(to.getDateToMinute());
+    	jsonHTTPAccessTO.setHttpStatus(to.getHttpStatus());
+    	jsonHTTPAccessTO.setIpAddress(to.getIpAddress());
+    	jsonHTTPAccessTO.setRequests(to.getRequests());
+    	jsonHTTPAccessTO.setUrl(to.getUrl());
+    	return jsonHTTPAccessTO;
     }
     
-    public static HTTPAccessTO createSimulated() {
+    public static JsonHTTPAccessTO convertToJsonTo(HTTPAccessData to) {
+    	JsonHTTPAccessTO jsonHTTPAccessTO = new JsonHTTPAccessTO();
+    	jsonHTTPAccessTO.setAction(to.getAction());
+    	jsonHTTPAccessTO.setDate(to.getDate());
+    	jsonHTTPAccessTO.setDateTime(to.getDate());
+    	jsonHTTPAccessTO.setDateToMinute(to.getDateToMinute());
+    	jsonHTTPAccessTO.setHttpStatus(to.getHttpStatus());
+    	jsonHTTPAccessTO.setIpAddress(to.getIpAddress());
+    	jsonHTTPAccessTO.setRequests(to.getRequests());
+    	jsonHTTPAccessTO.setUrl(to.getUrl());
+    	return jsonHTTPAccessTO;
+    }
+    
+    public static HTTPAccessTO convertToDbTo(JsonHTTPAccessTO to) {
+        return new HTTPAccessTO.Builder()
+	        .setIPAdress(to.getIpAddress())
+	        .setHttpStatus(to.getHttpStatus())
+	        .setDate(to.getDate())
+	        .setDateToMinute(to.getDateToMinute())
+	        .setDateTime(to.getDateTime())
+	        .setAction(to.getAction())
+	        .setUrl(to.getUrl())
+	        .setRequests(to.getRequests())
+	        .build();    	
+    }
+    
+    public static HTTPAccessTO create() {
         Random random = new Random();
         int index = random.nextInt(SimulationConstants.HTTP_STATUS_LIST.size());
         String httpStatus = SimulationConstants.HTTP_STATUS_LIST.get(index);

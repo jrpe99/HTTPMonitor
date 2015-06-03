@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Random;
 
 @SuppressWarnings("serial")
-public class HTTPAccessSpout extends BaseRichSpout {
+public class HTTPAccessJSONSpout extends BaseRichSpout {
     private SpoutOutputCollector collector;
     private Random random = new Random();
 
@@ -25,7 +25,7 @@ public class HTTPAccessSpout extends BaseRichSpout {
 
     @Override
     public void nextTuple() {
-        HTTPAccessTO to = HTTPAccessTOFactory.createSimulated();
+        HTTPAccessTO to = HTTPAccessTOFactory.create();
         collector.emit(new Values(to));
         System.out.println("SPOUT Thread : " + Thread.currentThread().getName() + " emit new HTTP Access IP : " + to.getIpAddress());
         int sleepTime = random.nextInt(2000);

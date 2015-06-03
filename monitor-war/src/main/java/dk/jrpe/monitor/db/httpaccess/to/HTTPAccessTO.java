@@ -46,17 +46,6 @@ public class HTTPAccessTO {
         return requests;
     }
 
-    public HTTPAccessTO(JsonHTTPAccessTO to) {
-        this.httpStatus = to.getHttpStatus();
-        this.ipAddress = to.getIpAddress();
-        this.date = to.getDate();
-        this.dateToMinute = to.getDateToMinute();
-        this.dateTime = to.getDateTime();
-        this.action = to.getAction();
-        this.url = to.getUrl();
-        this.requests = to.getRequests();
-    }
-    
     private HTTPAccessTO(Builder builder) {
         this.httpStatus = builder.httpStatus;
         this.ipAddress = builder.ipAddress;

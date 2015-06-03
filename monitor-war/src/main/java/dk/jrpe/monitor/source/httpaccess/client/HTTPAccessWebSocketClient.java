@@ -18,7 +18,7 @@ public class HTTPAccessWebSocketClient {
 	}
 	
 	public void sendToServer(HTTPAccessTO to, String command) throws Exception {
-        JsonHTTPAccessTO jsonTo = HTTPAccessTOFactory.createSimulatedForJSON(to);
+        JsonHTTPAccessTO jsonTo = HTTPAccessTOFactory.convertToJsonTo(to);
         jsonTo.setCommand(command);
         this.client.send(JSONMapper.toJSON(jsonTo));
 	}

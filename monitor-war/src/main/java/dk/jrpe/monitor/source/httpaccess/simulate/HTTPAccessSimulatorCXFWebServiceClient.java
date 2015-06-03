@@ -12,7 +12,7 @@ public class HTTPAccessSimulatorCXFWebServiceClient {
             Random random = new Random();
             HTTPAccessCXFWebServiceClient client = new HTTPAccessCXFWebServiceClient();
             while (true) {
-            	HTTPAccessTO data = HTTPAccessTOFactory.createSimulated();
+            	HTTPAccessTO data = HTTPAccessTOFactory.create();
             	
                 if (data.getHttpStatus().equals("200")) {
                 	client.sendToServer(data, CommandHandler.CommandEnum.SEND_HTTP_SUCCESS_DATA.toString());
