@@ -6,13 +6,15 @@ import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.utils.Utils;
 import dk.jrpe.monitor.source.httpaccess.storm.HTTPAccessCXFWebServiceBolt;
 import dk.jrpe.monitor.source.httpaccess.storm.HTTPAccessSpout;
+import dk.jrpe.monitor.source.httpaccess.storm.HTTPAccessWebSocketBolt;
 
 public class HTTPAccessSimulatorStormClient {
     public static void main(String[] args) {
         TopologyBuilder builder = new TopologyBuilder();
 
         builder.setSpout("HTTPAccessSource", new HTTPAccessSpout(),10);
-        builder.setBolt("HTTPAccessDestination", new HTTPAccessCXFWebServiceBolt(), 5).shuffleGrouping("HTTPAccessSource");
+        builder.setBolt("Web-service destination", new HTTPAccessCXFWebServiceBolt(), 2).shuffleGrouping("HTTPAccessSource");
+        builder.setBolt("Web-socket destination", new HTTPAccessWebSocketBolt(), 2).shuffleGrouping("HTTPAccessSource");
 
         Config conf = new Config();
         conf.setNumWorkers(1);
