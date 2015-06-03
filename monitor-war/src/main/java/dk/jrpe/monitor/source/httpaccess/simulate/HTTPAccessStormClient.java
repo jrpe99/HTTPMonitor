@@ -7,7 +7,7 @@ import backtype.storm.utils.Utils;
 import dk.jrpe.monitor.source.httpaccess.storm.HTTPAccessBolt;
 import dk.jrpe.monitor.source.httpaccess.storm.HTTPAccessSpout;
 
-public class StromHTTPAccessSimulator {
+public class HTTPAccessStormClient {
     public static void main(String[] args) {
         TopologyBuilder builder = new TopologyBuilder();
 
