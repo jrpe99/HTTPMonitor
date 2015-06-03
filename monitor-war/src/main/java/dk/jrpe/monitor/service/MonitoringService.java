@@ -30,7 +30,6 @@ public class MonitoringService {
         static final MonitoringService instance = new MonitoringService();
     }
     
-//    private final Timer monitorTimer = new Timer();
     private ScheduledExecutorService monitorTimer = null;
     
     private final List<MonitoringTask> monitoringTaskList = new ArrayList<>();
