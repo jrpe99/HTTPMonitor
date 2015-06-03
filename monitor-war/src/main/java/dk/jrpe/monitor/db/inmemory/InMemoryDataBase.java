@@ -8,7 +8,9 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.stream.Collectors;
 
 /**
- *
+ * Singelton<br>
+ * Implementation of an in-memory database for HTTP access data with the same "schema" as the Cassandra database schema.<br>
+ * See {@link dk.jrpe.monitor.db.cassandra.schema.HTTPAccessSchema}
  * @author Jörgen Persson
  */
 public class InMemoryDataBase {

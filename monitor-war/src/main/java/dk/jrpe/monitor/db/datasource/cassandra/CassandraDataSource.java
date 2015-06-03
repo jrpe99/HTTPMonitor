@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *
+ * Data source for a Cassandra database.
  * @author Jörgen Persson
  */
 public class CassandraDataSource implements DataSource {

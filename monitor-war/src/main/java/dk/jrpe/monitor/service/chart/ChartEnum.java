@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 /**
  * Each ENUM holds a Function representing the strategy to convert 
- * a list of rows from the Cassandra database to JSON.
+ * a list of rows from the database to JSON.
  * 
  * @author Jörgen Persson
  */

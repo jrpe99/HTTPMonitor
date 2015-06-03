@@ -4,7 +4,7 @@ import dk.jrpe.monitor.db.datasource.cassandra.CassandraDataSource;
 import dk.jrpe.monitor.db.datasource.inmemory.InMemoryDataSource;
 
 /**
- * Factory Enum for monitoring data source
+ * Factory Enum for data sources. Default data source is IN_MEMORY.
  * @author Jörgen Persson
  */
 public enum DataSourceFactory {

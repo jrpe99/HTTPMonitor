@@ -8,7 +8,13 @@ import java.util.Set;
 import javax.websocket.Session;
 
 /**
+ * Handles client subscriptions for a list of charts.
+ * Based on the list of chart names, it added a EnumSet of 
+ * subscribed charts to the user session.<br>
+ * The subscription is used to send only subscribed charts to a client.
+ * See {@link dk.jrpe.monitor.websocket.WebSocketHelper} 
  *
+ * 
  * @author Jörgen Persson
  */
 public class ChartSubscriptionHandler {

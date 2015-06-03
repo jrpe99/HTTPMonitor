@@ -4,7 +4,7 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import java.util.List;
 
 /**
- *
+ * Data source for HTTP Access data 
  * @author Jörgen Persson
  */
 public interface DataSource extends AutoCloseable {

@@ -20,7 +20,6 @@ public class HTTPAccessDAO {
         System.out.println("Save: " + to.toString());
         ZonedDateTime now = ZonedDateTime.now().withSecond(0).withNano(0);
         int hour = now.getHour();
-        long epoch = now.toEpochSecond();
 
         this.dataSource.saveHttpAccess(to, hour);
 
