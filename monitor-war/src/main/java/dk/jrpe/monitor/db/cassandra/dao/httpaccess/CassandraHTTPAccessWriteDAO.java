@@ -10,6 +10,9 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
         super(conn);
     }
     
+    /**
+     * See {@link dk.jrpe.monitor.db.datasource.DataSource#saveHttpAccess(HTTPAccessTO, int)}
+     */
     public void saveHttpAccess(HTTPAccessTO to, int hour) {
         StringBuilder cql = new StringBuilder();
         cql.append("INSERT INTO httpaccess.http_access (hour,ip_address,http_status,action,url,date_to_minute) ");
@@ -25,6 +28,9 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
         conn.execute(cql.toString());
     }
 
+    /**
+     * See {@link dk.jrpe.monitor.db.datasource.DataSource#updateHttpSuccess(HTTPAccessTO)}
+     */
     public void updateHttpSuccess(HTTPAccessTO to) {
         StringBuilder cql = new StringBuilder();
         cql.append("UPDATE httpaccess.http_success ");
@@ -35,6 +41,9 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
         conn.execute(cql.toString());
     }
 
+    /**
+     * See {@link dk.jrpe.monitor.db.datasource.DataSource#updateHttpSuccessPerMinute(HTTPAccessTO)}
+     */
     public void updateHttpSuccessPerMinute(HTTPAccessTO to) {
         StringBuilder cql = new StringBuilder();
         cql.append("UPDATE httpaccess.http_success_per_minute ");
@@ -46,6 +55,9 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
         conn.execute(cql.toString());
     }
 
+    /**
+     * See {@link dk.jrpe.monitor.db.datasource.DataSource#updateHttpFailed(HTTPAccessTO)}
+     */
     public void updateHttpFailed(HTTPAccessTO to) {
         StringBuilder cql = new StringBuilder();
         cql.append("UPDATE httpaccess.http_failed ");
@@ -56,6 +68,9 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
         conn.execute(cql.toString());
     }
 
+    /**
+     * See {@link dk.jrpe.monitor.db.datasource.DataSource#updateHttpFailedPerMinute(HTTPAccessTO)}
+     */
     public void updateHttpFailedPerMinute(HTTPAccessTO to) {
         StringBuilder cql = new StringBuilder();
         cql.append("UPDATE httpaccess.http_failed_per_minute ");

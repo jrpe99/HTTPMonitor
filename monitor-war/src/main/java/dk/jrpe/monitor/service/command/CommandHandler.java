@@ -8,7 +8,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 /**
  * The command handler holds concrete command implementations
- * represented by the command ENUM. 
+ * represented by the command ENUM that takes an implementation
+ * of the functional interface Consumer.
  * 
  * @author Jörgen Persson
  */
@@ -31,8 +32,7 @@ public class CommandHandler {
         
         /**
          * The following commands, are for sending HTTP access data to the monitoring 
-         * application. This is used when a client is not storing data directly in
-         * a common database, like when in memory database is used.
+         * application. 
          */
         SEND_HTTP_SUCCESS_DATA((cmdHandler -> { new SendHttpSuccessDataCmd().execute(cmdHandler); })),
         SEND_HTTP_SUCCESS_PER_MINUTE_DATA((cmdHandler -> { new SendHttpSuccessPerMinuteDataCmd().execute(cmdHandler); })),
@@ -58,12 +58,12 @@ public class CommandHandler {
     private String json;
 
     private void executeConcreteCommand() {
-        System.out.println("Execute concrete command: " + this.command.toString());
+        System.out.println("Execute command: " + this.command.toString());
         this.command.execute(this);
     }
 
     /**
-     * Decode the JSON string to a concrete command object and execute the concrete command.
+     * Decode the JSON string to a command object and execute the command.
      * Example JSON:
      * {"command":"CHART_SUBSCRIPTION","chartSubscription":["LINE_SUCCESS_AND_FAILED", "PIE_SUCCESS"]}
      * @param json

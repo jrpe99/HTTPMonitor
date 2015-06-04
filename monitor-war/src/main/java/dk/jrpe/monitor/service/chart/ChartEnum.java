@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.function.Function;
 
 /**
- * Each ENUM holds a Function representing the strategy to convert 
+ * Each ENUM holds a Function representing the adapter to convert 
  * a list of rows from the database to JSON.
  * 
  * @author Jörgen Persson

@@ -28,25 +28,35 @@ import java.util.List;
  * @author Jörgen Persson
  */
 public class RadarChartJSONAdapter {
-    public static String httpSuccessToJSON(List<HTTPAccessTO> rowList) {
-        return toJSON(rowList, "successful_requests");
+	/**
+	 * Adapt the list of successful HTTP request per IP address to JSON.
+	 * @param list 
+	 * @return JSON for chart type Radar
+	 */
+    public static String httpSuccessToJSON(List<HTTPAccessTO> list) {
+        return toJSON(list, "successful_requests");
     }
     
-    public static String httpFailureToJSON(List<HTTPAccessTO> rowList) {
-        return toJSON(rowList, "failed_requests");
+	/**
+	 * Adapt the list of failed HTTP request per IP address to JSON.
+	 * @param list 
+	 * @return JSON for chart type Radar
+	 */
+    public static String httpFailureToJSON(List<HTTPAccessTO> list) {
+        return toJSON(list, "failed_requests");
     }
     
-    private static String toJSON(List<HTTPAccessTO> rowList, String dataSet) {
+    private static String toJSON(List<HTTPAccessTO> list, String dataSet) {
         StringBuilder json = new StringBuilder();
 
         json.append("{");
         json.append("\"chart\": \"radar\",");
         json.append("\"dataset\": \"").append(dataSet).append("\",");
         json.append("\"data\": {");
-        if(!rowList.isEmpty()) {
+        if(!list.isEmpty()) {
             StringBuilder labelList = new StringBuilder(); 
             StringBuilder dataList = new StringBuilder();
-            createLists(rowList, labelList, dataList);
+            createLists(list, labelList, dataList);
             
             json.append("\"labels\":").append(labelList).append(",");
             json.append("\"datasets\": [");

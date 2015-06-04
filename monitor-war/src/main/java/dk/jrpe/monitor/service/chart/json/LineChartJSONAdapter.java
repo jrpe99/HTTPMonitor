@@ -30,6 +30,13 @@ import java.util.Map;
  * @author Jörgen Persson
  */
 public class LineChartJSONAdapter {
+	/**
+	 * Adapt the input data to one JSON string the match a line chart as defined by Chart.js
+	 * @param dataSetMap one list (key Success) with successful HTTP requests per minute
+	 * and one (key Failed) with failed requests per minute.
+	 * @param period
+	 * @return
+	 */
     public static String toJSON(HashMap<String,List<HTTPAccessTO>> dataSetMap, int period) {
         StringBuilder json = new StringBuilder();
         json.append("{");

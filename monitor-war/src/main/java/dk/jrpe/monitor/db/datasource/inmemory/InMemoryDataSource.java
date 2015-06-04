@@ -6,7 +6,7 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import java.util.List;
 
 /**
- *
+ * Data source for the in memory database.
  * @author Jörgen Persson
  */
 public class InMemoryDataSource implements DataSource {

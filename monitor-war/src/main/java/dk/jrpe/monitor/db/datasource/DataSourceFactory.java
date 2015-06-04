@@ -15,11 +15,19 @@ public enum DataSourceFactory {
         this.dataSource = dataSource;
     }
     
+    /**
+     * Get default data source.
+     * @return the instance of the default data source.
+     */
     public static DataSource getDefault() {
 //        return CASSANDRA.get();
         return IN_MEMORY.get();
     }
     
+    /**
+     * Get current data source
+     * @return the instance of current data source.
+     */
     public DataSource get() {
         return this.dataSource;
     }

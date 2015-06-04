@@ -7,7 +7,7 @@ import dk.jrpe.monitor.json.JSONMapper;
 import dk.jrpe.monitor.source.httpaccess.simulate.HTTPAccessTOFactory;
 
 /**
- *
+ * Command for sending on failed HTTP request
  * @author Jörgen Persson
  */
 public class SendHttpFailedDataCmd extends Command {

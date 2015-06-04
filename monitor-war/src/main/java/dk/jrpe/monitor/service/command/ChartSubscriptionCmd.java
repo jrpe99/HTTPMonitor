@@ -4,7 +4,7 @@ import dk.jrpe.monitor.service.chart.ChartSubscriptionHandler;
 import java.util.List;
 
 /**
- *
+ * Command for subscribing to a chart list.
  * @author Jörgen Persson
  */
 public class ChartSubscriptionCmd extends Command {

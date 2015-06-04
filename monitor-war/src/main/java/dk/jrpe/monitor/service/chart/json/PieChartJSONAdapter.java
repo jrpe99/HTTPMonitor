@@ -33,24 +33,34 @@ import java.util.List;
  * @author Jörgen Persson
  */
 public class PieChartJSONAdapter {
-    public static String httpSuccessToJSON(List<HTTPAccessTO> rowList) {
-        return toJSON(rowList, "successful_requests", "00", "FA");
+	/**
+	 * Adapt the list of successful HTTP request per IP address to JSON.
+	 * @param list 
+	 * @return JSON for chart types Pie & Doughnut and Polar
+	 */
+	public static String httpSuccessToJSON(List<HTTPAccessTO> list) {
+        return toJSON(list, "successful_requests", "00", "FA");
     }
     
-    public static String httpFailureToJSON(List<HTTPAccessTO> rowList) {
-        return toJSON(rowList, "failed_requests", "FA", "00");
+	/**
+	 * Adapt the list of failed HTTP request per IP address to JSON.
+	 * @param list 
+	 * @return JSON for chart types Pie & Doughnut and Polar
+	 */
+    public static String httpFailureToJSON(List<HTTPAccessTO> list) {
+        return toJSON(list, "failed_requests", "FA", "00");
     }
     
-    private static String toJSON(List<HTTPAccessTO> rowList, String dataSet,String colorSeed1, String colorSeed2) {
+    private static String toJSON(List<HTTPAccessTO> list, String dataSet,String colorSeed1, String colorSeed2) {
         StringBuilder json = new StringBuilder();
         
         json.append("{");
         json.append("\"chart\": \"pie\",");
         json.append("\"").append(dataSet).append("\": [");
 
-        if(!rowList.isEmpty()) {
+        if(!list.isEmpty()) {
             int index = 0;
-            int size = rowList.size();
+            int size = list.size();
             int colorIndex = 254 / size;
             int color = 0;
 
@@ -58,7 +68,7 @@ public class PieChartJSONAdapter {
                 String hex = Integer.toHexString(color);
                 hex = hex.length() == 1 ? "0"+hex : hex;
                 String hexColor = colorSeed1 + hex + colorSeed2;
-                HTTPAccessTO row = rowList.get(index);
+                HTTPAccessTO row = list.get(index);
 
                 String ipAddress = row.getIpAddress();
                 Long httpRequestCount = row.getRequests();

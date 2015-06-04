@@ -35,6 +35,11 @@ public class MonitoringService {
     private final List<MonitoringTask> monitoringTaskList = new ArrayList<>();
     private final List<Session> sessionList = new CopyOnWriteArrayList<>();
 
+    /**
+     * Get data source and construct monitoring tasks which are added to the
+     * {@code monitoringTaskList}
+     * <p> Start all tasks.
+     */
     private MonitoringService() {
         try {
             DataSource dataSource = DataSourceFactory.getDefault();
@@ -48,7 +53,7 @@ public class MonitoringService {
     
     /**
      * Return the instance of the monitoring service.
-     * @return
+     * @return monitoring service instance
      */
     public static MonitoringService getInstance() {
         return InstanceHolder.instance;
@@ -57,25 +62,25 @@ public class MonitoringService {
     /**
      * Add a WebSocket session to each monitoring task.
      * 
-     * @param session
+     * @param session the WebSocket session
      */
     public void addSession(Session session) {
-        sessionList.add(session);
+    	this.sessionList.add(session);
     }
     
     /**
      * Remove a WebSocket session from each monitoring task.
      *
-     * @param session
+     * @param session the WebSocket session
      */
     public void removeSession(Session session) {
-        sessionList.remove(session);
+    	this.sessionList.remove(session);
     }
 
     /**
      * Execute the command sent from the client
-     * @param json
-     * @param session
+     * @param json the json string representing command and data.
+     * @param session the WebSocket session
      */
     public void executeCommand(String json, Session session) {
         CommandHandler.execute(json, session);
@@ -84,8 +89,8 @@ public class MonitoringService {
      * Stop the monitoring timer.
      */
     public void stop() {
-        monitorTimer.shutdown();
-        monitoringTaskList.stream().forEach((monitoringTask) -> {
+    	this.monitorTimer.shutdown();
+    	this.monitoringTaskList.stream().forEach((monitoringTask) -> {
             try {
                 monitoringTask.cancel();
             } catch (Exception ex) {
@@ -98,9 +103,9 @@ public class MonitoringService {
      * Schedule all monitoring tasks.
      */
     private void start() {
-        monitorTimer = Executors.newScheduledThreadPool(monitoringTaskList.size());
-        monitoringTaskList.stream().forEach((monitoringTask) -> {
-            monitorTimer.scheduleWithFixedDelay(monitoringTask, 0, monitoringTask.getDelay(), TimeUnit.MILLISECONDS);
+        this.monitorTimer = Executors.newScheduledThreadPool(monitoringTaskList.size());
+        this.monitoringTaskList.stream().forEach((monitoringTask) -> {
+        	this.monitorTimer.scheduleWithFixedDelay(monitoringTask, 0, monitoringTask.getDelay(), TimeUnit.MILLISECONDS);
         });
     }
 }

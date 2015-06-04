@@ -3,6 +3,11 @@ package dk.jrpe.monitor.db.cassandra.schema;
 
 import dk.jrpe.monitor.db.cassandra.CassandraConnectionHandler;
 
+/**
+ * Create schema and tables in a Cassandra database for HTTP access data.
+ * @author Jörgen Persson
+ *
+ */
 public class HTTPAccessSchema {
     public static void main(String[] args) {
         new HTTPAccessSchema().createSchema();
@@ -10,7 +15,6 @@ public class HTTPAccessSchema {
 
     public void createSchema() {
         try (CassandraConnectionHandler connectionHandler = new CassandraConnectionHandler()) {
-            connectionHandler.connect();
             connectionHandler.execute("CREATE KEYSPACE IF NOT EXISTS httpaccess WITH replication = {'class':'SimpleStrategy', 'replication_factor':2};");
 
             StringBuilder logHttpAccessTable = new StringBuilder();

@@ -58,7 +58,6 @@ public class CassandraDataSource implements DataSource {
     @Override public void open() {
         if(this.conn == null) {
             this.conn = new CassandraConnectionHandler();
-            this.conn.connect();
             this.readDao = new CassandraHTTPAccessReadDAO(this.conn);
             this.writeDao = new CassandraHTTPAccessWriteDAO(this.conn);
         }
@@ -70,6 +69,11 @@ public class CassandraDataSource implements DataSource {
         }
     }
 
+    /**
+     * Adapt the result from the Cassandra database to internal representation.
+     * @param list
+     * @return list of objects representing one row in the database.
+     */
     private List<HTTPAccessTO> adaptHttpAccess(List<Row> list) {
         return list.stream().map(row -> 
             new HTTPAccessTO.Builder()
