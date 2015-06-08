@@ -60,7 +60,7 @@
 
 	<wsdl:service name="HTTPAccessDataSyncService">
 		<wsdl:port name="HTTPAccessDataSyncPort" binding="tns:HTTPAccessDataSyncBinding">
-			<soap:address location="http://localhost:8080/monitor-ws/httpaccessdata" />
+			<soap:address location="http://localhost:8080/monitor/HTTPAccessDataSyncPort" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>    
