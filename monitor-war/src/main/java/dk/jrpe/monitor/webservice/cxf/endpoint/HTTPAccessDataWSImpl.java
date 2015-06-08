@@ -6,14 +6,14 @@ import javax.xml.ws.WebServiceContext;
 import dk.jrpe.monitor.json.JSONMapper;
 import dk.jrpe.monitor.service.command.CommandHandler;
 import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessData;
-import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessDataPort;
+import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessDataSyncPort;
 /**
  * Implementation of a CXF generated web-service end-point.
  * <p>Receive HTTP Access data and convert the data to JSON 
  * which is the input format of the {@link dk.jrpe.monitor.service.command.CommandHandler}.
  * @author Jörgen Persson
  */
-public class HTTPAccessDataWSImpl implements HTTPAccessDataPort {
+public class HTTPAccessDataWSImpl implements HTTPAccessDataSyncPort {
 
     /**
      * The WebServiceContext can be used to retrieve special attributes like the 

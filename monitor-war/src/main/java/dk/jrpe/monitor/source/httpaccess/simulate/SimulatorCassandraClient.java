@@ -2,13 +2,14 @@ package dk.jrpe.monitor.source.httpaccess.simulate;
 
 import java.util.Random;
 
-import dk.jrpe.monitor.source.httpaccess.client.HTTPAccessCassandraClient;
+import dk.jrpe.monitor.source.httpaccess.client.CassandraClient;
+import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
 
-public class HTTPAccessSimulatorCassandraClient {
+public class SimulatorCassandraClient {
     public static void main(String[] args) {
         try {
             Random random = new Random();
-            HTTPAccessCassandraClient client = new HTTPAccessCassandraClient();
+            CassandraClient client = new CassandraClient();
             while(true) {
                 client.saveAndUpdate(HTTPAccessTOFactory.createSimulated());
                 

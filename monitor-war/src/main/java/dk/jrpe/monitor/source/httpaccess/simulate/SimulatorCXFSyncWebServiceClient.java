@@ -3,21 +3,22 @@ package dk.jrpe.monitor.source.httpaccess.simulate;
 import java.net.MalformedURLException;
 import java.util.Random;
 
-import dk.jrpe.monitor.source.httpaccess.client.HTTPAccessCXFWebServiceClient;
+import dk.jrpe.monitor.source.httpaccess.client.CXFSyncWebServiceClient;
+import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
 
-public class HTTPAccessSimulatorCXFWebServiceClient {
+public class SimulatorCXFSyncWebServiceClient {
     public static void main(String[] args) {
     	try {
-			new HTTPAccessSimulatorCXFWebServiceClient().simulate();
+			new SimulatorCXFSyncWebServiceClient().simulate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
 
-    private final HTTPAccessCXFWebServiceClient client;
+    private final CXFSyncWebServiceClient client;
     
-    public HTTPAccessSimulatorCXFWebServiceClient() throws MalformedURLException {
-        this.client = new HTTPAccessCXFWebServiceClient();
+    public SimulatorCXFSyncWebServiceClient() throws MalformedURLException {
+        this.client = new CXFSyncWebServiceClient();
 	}
 
 	public void simulate() throws Exception {

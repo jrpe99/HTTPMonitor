@@ -77,7 +77,7 @@
                             <!-- sourceRoot>${project.build.directory}/generated/cxf</sourceRoot-->
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${basedir}/src/main/resources/HTTPAccessData.wsdl</wsdl>
+                                    <wsdl>${basedir}/src/main/resources/HTTPAccessDataSync.wsdl</wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>

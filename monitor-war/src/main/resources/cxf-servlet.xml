@@ -5,10 +5,10 @@
 
 	<jaxws:endpoint 
 		xmlns:data="http://sync.endpoint.generated.cxf.webservice.monitor.jrpe.dk/" 
-		id="HTTPAccessServiceHTTP"
-		address="/HTTPAccessServicePort" 
-		serviceName="data:HTTPAccessDataService" 
-		endpointName="data:HTTPAccessDataPort"
+		id="HTTPAccessDataSyncServiceHTTP"
+		address="/HTTPAccessServiceSyncPort" 
+		serviceName="data:HTTPAccessDataSyncService" 
+		endpointName="data:HTTPAccessDataSyncPort"
 		implementor="dk.jrpe.monitor.webservice.cxf.endpoint.HTTPAccessDataWSImpl">
 		
 		<!--jaxws:properties> <entry key="schema-validation-enabled" value="true" /> </jaxws:properties -->

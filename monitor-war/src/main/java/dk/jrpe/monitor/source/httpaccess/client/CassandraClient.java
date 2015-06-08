@@ -10,7 +10,7 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
  * @author Jörgen Persson
  *
  */
-public class HTTPAccessCassandraClient {
+public class CassandraClient {
     private final DataSource dataSource = DataSourceFactory.getDefault();
     
     /**

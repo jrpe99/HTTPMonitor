@@ -3,21 +3,22 @@ package dk.jrpe.monitor.source.httpaccess.simulate;
 import java.net.URISyntaxException;
 import java.util.Random;
 
-import dk.jrpe.monitor.source.httpaccess.client.HTTPAccessWebSocketClient;
+import dk.jrpe.monitor.source.httpaccess.client.WebSocketClient;
+import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
 
-public class HTTPAccessSimulatorWebSocketClient {
+public class SimulatorWebSocketClient {
     public static void main(String[] args) {
     	try {
-			new HTTPAccessSimulatorWebSocketClient().simulate();
+			new SimulatorWebSocketClient().simulate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
 
-    private final HTTPAccessWebSocketClient client;
+    private final WebSocketClient client;
     
-    public HTTPAccessSimulatorWebSocketClient() throws URISyntaxException {
-        this.client = new HTTPAccessWebSocketClient();
+    public SimulatorWebSocketClient() throws URISyntaxException {
+        this.client = new WebSocketClient();
 	}
 
 	public void simulate() throws Exception {

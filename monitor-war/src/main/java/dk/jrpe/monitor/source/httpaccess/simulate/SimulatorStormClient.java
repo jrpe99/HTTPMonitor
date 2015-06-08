@@ -8,7 +8,7 @@ import dk.jrpe.monitor.source.httpaccess.storm.HTTPAccessCXFWebServiceBolt;
 import dk.jrpe.monitor.source.httpaccess.storm.HTTPAccessSpout;
 import dk.jrpe.monitor.source.httpaccess.storm.HTTPAccessWebSocketBolt;
 
-public class HTTPAccessSimulatorStormClient {
+public class SimulatorStormClient {
     public static void main(String[] args) {
         TopologyBuilder builder = new TopologyBuilder();
 

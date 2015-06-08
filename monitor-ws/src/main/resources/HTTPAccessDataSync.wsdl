@@ -3,6 +3,7 @@
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://sync.endpoint.generated.cxf.webservice.monitor.jrpe.dk/"
+	name="HTTPAccessDataSyncService"
 	targetNamespace="http://sync.endpoint.generated.cxf.webservice.monitor.jrpe.dk/">
 	<wsdl:types>
 		<xs:schema 
@@ -41,13 +42,13 @@
 		<wsdl:part name="sendHTTPAccessData" element="tns:sendHTTPAccessData" />
 	</wsdl:message>
 
-	<wsdl:portType name="HTTPAccessDataPort">
+	<wsdl:portType name="HTTPAccessDataSyncPort">
 		<wsdl:operation name="sendHTTPAccessData">
 			<wsdl:input message="tns:sendHTTPAccessData" name="sendHTTPAccessData" />
 		</wsdl:operation>
 	</wsdl:portType>
 
-	<wsdl:binding name="HTTPAccessDataBinding" type="tns:HTTPAccessDataPort">
+	<wsdl:binding name="HTTPAccessDataSyncBinding" type="tns:HTTPAccessDataSyncPort">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="sendHTTPAccessData">
 			<soap:operation soapAction="" style="document" />
@@ -57,8 +58,8 @@
 		</wsdl:operation>
 	</wsdl:binding>
 
-	<wsdl:service name="HTTPAccessDataService">
-		<wsdl:port name="HTTPAccessDataPort" binding="tns:HTTPAccessDataBinding">
+	<wsdl:service name="HTTPAccessDataSyncService">
+		<wsdl:port name="HTTPAccessDataSyncPort" binding="tns:HTTPAccessDataSyncBinding">
 			<soap:address location="http://localhost:8080/monitor-ws/httpaccessdata" />
 		</wsdl:port>
 	</wsdl:service>
