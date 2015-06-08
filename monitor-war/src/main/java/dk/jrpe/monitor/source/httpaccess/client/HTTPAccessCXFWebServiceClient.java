@@ -5,9 +5,9 @@ import java.net.URL;
 
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import dk.jrpe.monitor.source.httpaccess.simulate.HTTPAccessTOFactory;
-import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessData;
-import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataPort;
-import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataService;
+import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessData;
+import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessDataPort;
+import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessDataService;
 
 /**
  * Client for sending HTTP access data to the server using a CXF Web-service.

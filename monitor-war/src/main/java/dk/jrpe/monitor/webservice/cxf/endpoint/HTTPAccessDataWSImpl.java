@@ -1,16 +1,16 @@
-package dk.jrpe.monitor.webservice.endpoint;
+package dk.jrpe.monitor.webservice.cxf.endpoint;
 
 import javax.annotation.Resource;
 import javax.xml.ws.WebServiceContext;
 
-import dk.jrpe.monitor.db.httpaccess.to.JsonHTTPAccessTO;
 import dk.jrpe.monitor.json.JSONMapper;
 import dk.jrpe.monitor.service.command.CommandHandler;
-import dk.jrpe.monitor.source.httpaccess.simulate.HTTPAccessTOFactory;
-import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessData;
-import dk.jrpe.monitor.webservice.endpoint.generated.HTTPAccessDataPort;
+import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessData;
+import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessDataPort;
 /**
- *
+ * Implementation of a CXF generated web-service end-point.
+ * <p>Receive HTTP Access data and convert the data to JSON 
+ * which is the input format of the {@link dk.jrpe.monitor.service.command.CommandHandler}.
  * @author Jörgen Persson
  */
 public class HTTPAccessDataWSImpl implements HTTPAccessDataPort {
@@ -24,7 +24,6 @@ public class HTTPAccessDataWSImpl implements HTTPAccessDataPort {
 
 	@Override
 	public void sendHTTPAccessData(HTTPAccessData data) {
-        JsonHTTPAccessTO jsonTo = HTTPAccessTOFactory.convertToJsonTo(data);
-        CommandHandler.execute(JSONMapper.toJSON(jsonTo), null);
+        CommandHandler.execute(JSONMapper.toJSON(data), null);
 	}
 }

@@ -2,15 +2,15 @@
 <wsdl:definitions 
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-	xmlns:tns="http://generated.endpoint.webservice.monitor.jrpe.dk/"
-	targetNamespace="http://generated.endpoint.webservice.monitor.jrpe.dk/">
+	xmlns:tns="http://sync.endpoint.generated.cxf.webservice.monitor.jrpe.dk/"
+	targetNamespace="http://sync.endpoint.generated.cxf.webservice.monitor.jrpe.dk/">
 	<wsdl:types>
 		<xs:schema 
 			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-			xmlns:tns="http://generated.endpoint.webservice.monitor.jrpe.dk/"
+			xmlns:tns="http://sync.endpoint.generated.cxf.webservice.monitor.jrpe.dk/"
 			attributeFormDefault="unqualified" 
 			elementFormDefault="unqualified" 
-			targetNamespace="http://generated.endpoint.webservice.monitor.jrpe.dk/">
+			targetNamespace="http://sync.endpoint.generated.cxf.webservice.monitor.jrpe.dk/">
 
 			<xs:element name="sendHTTPAccessData" type="tns:sendHTTPAccessData" />
 
@@ -22,7 +22,7 @@
 
 			<xs:complexType name="HTTPAccessData">
 				<xs:sequence>
-					<xs:element name="Command" type="xs:string" />
+					<xs:element name="command" type="xs:string" />
 					<xs:element name="httpStatus" type="xs:string" />
 					<xs:element name="ipAddress" type="xs:string" />
 					<xs:element name="action" type="xs:string" />

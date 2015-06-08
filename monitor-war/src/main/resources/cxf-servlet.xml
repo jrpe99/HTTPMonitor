@@ -4,12 +4,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
 	<jaxws:endpoint 
-		xmlns:data="http://generated.endpoint.webservice.monitor.jrpe.dk/" 
+		xmlns:data="http://sync.endpoint.generated.cxf.webservice.monitor.jrpe.dk/" 
 		id="HTTPAccessServiceHTTP"
 		address="/HTTPAccessServicePort" 
 		serviceName="data:HTTPAccessDataService" 
 		endpointName="data:HTTPAccessDataPort"
-		implementor="dk.jrpe.monitor.webservice.endpoint.HTTPAccessDataWSImpl">
+		implementor="dk.jrpe.monitor.webservice.cxf.endpoint.HTTPAccessDataWSImpl">
 		
 		<!--jaxws:properties> <entry key="schema-validation-enabled" value="true" /> </jaxws:properties -->
 	</jaxws:endpoint>
