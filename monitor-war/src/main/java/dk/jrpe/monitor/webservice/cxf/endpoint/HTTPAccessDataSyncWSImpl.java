@@ -13,7 +13,7 @@ import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessDataSync
  * which is the input format of the {@link dk.jrpe.monitor.service.command.CommandHandler}.
  * @author Jörgen Persson
  */
-public class HTTPAccessDataWSImpl implements HTTPAccessDataSyncPort {
+public class HTTPAccessDataSyncWSImpl implements HTTPAccessDataSyncPort {
 
     /**
      * The WebServiceContext can be used to retrieve special attributes like the 

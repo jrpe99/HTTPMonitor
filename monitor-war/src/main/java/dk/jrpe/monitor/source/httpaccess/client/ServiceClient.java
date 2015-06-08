@@ -13,6 +13,12 @@ public abstract class ServiceClient {
         	sendToServer(to, CommandHandler.CommandEnum.SEND_HTTP_FAILED_PER_MINUTE_DATA.toString());
         }
     }
-    
+
+    /**
+     * Send HTTP access data to the server.
+     * @param to
+     * @param command must be one of {@link dk.jrpe.monitor.service.command.CommandHandler.CommandEnum}
+     * @throws Exception
+     */
 	public abstract void sendToServer(HTTPAccessTO to, String command) throws Exception;
 }
