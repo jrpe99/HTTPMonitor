@@ -3,7 +3,7 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
 	xmlns="http://java.sun.com/xml/ns/jaxws" 
-	wsdlLocation="HTTPAccessDataAsync.wsdl">
+	wsdlLocation="HTTPAccessData.wsdl">
     <bindings node="wsdl:definitions">
         <enableAsyncMapping>true</enableAsyncMapping>
     </bindings>

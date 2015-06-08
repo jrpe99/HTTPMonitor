@@ -2,15 +2,15 @@
 <wsdl:definitions 
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-	xmlns:tns="http://async.endpoint.generated.cxf.webservice.monitor.jrpe.dk/"
-	name="HTTPAccessDataAsyncService"
-	targetNamespace="http://async.endpoint.generated.cxf.webservice.monitor.jrpe.dk/">
+	xmlns:tns="http://endpoint.generated.cxf.webservice.monitor.jrpe.dk/"
+	name="HTTPAccessDataService"
+	targetNamespace="http://endpoint.generated.cxf.webservice.monitor.jrpe.dk/">
 	<wsdl:types>
 		<xsd:schema 
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-			xmlns:tns="http://async.endpoint.generated.cxf.webservice.monitor.jrpe.dk/"
+			xmlns:tns="http://endpoint.generated.cxf.webservice.monitor.jrpe.dk/"
 			elementFormDefault="qualified" 
-			targetNamespace="http://async.endpoint.generated.cxf.webservice.monitor.jrpe.dk/">
+			targetNamespace="http://endpoint.generated.cxf.webservice.monitor.jrpe.dk/">
 
 			<xsd:element name="sendHTTPAccessData" type="tns:sendHTTPAccessData" />
 			<xsd:element name="sendHTTPAccessDataResponse" type="tns:sendHTTPAccessDataResponse" />
@@ -52,14 +52,14 @@
 		<wsdl:part name="sendHTTPAccessDataResponse" element="tns:sendHTTPAccessDataResponse" />
 	</wsdl:message>
 
-	<wsdl:portType name="HTTPAccessDataAsyncPort">
+	<wsdl:portType name="HTTPAccessDataPort">
 		<wsdl:operation name="sendHTTPAccessData">
 			<wsdl:input message="tns:sendHTTPAccessData" name="sendHTTPAccessData" />
 			<wsdl:output message="tns:sendHTTPAccessDataResponse" name="sendHTTPAccessDataResponse" />
 		</wsdl:operation>
 	</wsdl:portType>
 
-	<wsdl:binding name="HTTPAccessDataAsyncBinding" type="tns:HTTPAccessDataAsyncPort">
+	<wsdl:binding name="HTTPAccessDataBinding" type="tns:HTTPAccessDataPort">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="sendHTTPAccessData">
 			<soap:operation soapAction="" style="document" />
@@ -72,9 +72,9 @@
 		</wsdl:operation>
 	</wsdl:binding>
 
-	<wsdl:service name="HTTPAccessDataAsyncService">
-		<wsdl:port name="HTTPAccessDataAsyncPort" binding="tns:HTTPAccessDataAsyncBinding">
-			<soap:address location="http://localhost:8080/monitor/HTTPAccessDataAsyncPort" />
+	<wsdl:service name="HTTPAccessDataService">
+		<wsdl:port name="HTTPAccessDataPort" binding="tns:HTTPAccessDataBinding">
+			<soap:address location="http://localhost:8080/monitor/HTTPAccessDataPort" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>    

@@ -58,7 +58,7 @@ public class CommandHandler {
     private String json;
 
     private void executeConcreteCommand() {
-        System.out.println("Execute command: " + this.command.toString());
+        //System.out.println("Execute command: " + this.command.toString());
         this.command.execute(this);
     }
 

@@ -11,18 +11,19 @@ import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
-import dk.jrpe.monitor.source.httpaccess.client.CXFSyncWebServiceClient;
+import dk.jrpe.monitor.source.httpaccess.client.CXFWebServiceClient;
+import dk.jrpe.monitor.webservice.cxf.CXFWebServiceMode;
 
 @SuppressWarnings("serial")
-public class HTTPAccessCXFWebServiceBolt extends BaseRichBolt {
+public class HTTPAccessCXFSyncWebServiceBolt extends BaseRichBolt {
     private OutputCollector collector;
-    private CXFSyncWebServiceClient client;
+    private CXFWebServiceClient client;
     
     @SuppressWarnings("rawtypes")
     public void prepare(Map conf, TopologyContext context, OutputCollector collector) {
         this.collector = collector;
         try {
-			this.client = new CXFSyncWebServiceClient();
+			this.client = new CXFWebServiceClient(CXFWebServiceMode.SYNC);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

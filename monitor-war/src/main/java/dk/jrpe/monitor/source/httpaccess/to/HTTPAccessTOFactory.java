@@ -7,7 +7,7 @@ import java.util.Random;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import dk.jrpe.monitor.db.httpaccess.to.JsonHTTPAccessTO;
 import dk.jrpe.monitor.source.httpaccess.simulate.SimulationConstants;
-import dk.jrpe.monitor.webservice.cxf.generated.endpoint.sync.HTTPAccessData;
+import dk.jrpe.monitor.webservice.cxf.generated.endpoint.HTTPAccessData;
 
 /**
  *

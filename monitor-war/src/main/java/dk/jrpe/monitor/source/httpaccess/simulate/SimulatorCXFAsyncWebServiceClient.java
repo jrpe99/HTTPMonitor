@@ -7,10 +7,10 @@ import dk.jrpe.monitor.source.httpaccess.client.CXFWebServiceClient;
 import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
 import dk.jrpe.monitor.webservice.cxf.CXFWebServiceMode;
 
-public class SimulatorCXFSyncWebServiceClient {
+public class SimulatorCXFAsyncWebServiceClient {
     public static void main(String[] args) {
     	try {
-			new SimulatorCXFSyncWebServiceClient().simulate();
+			new SimulatorCXFAsyncWebServiceClient().simulate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -18,8 +18,8 @@ public class SimulatorCXFSyncWebServiceClient {
 
     private final CXFWebServiceClient client;
     
-    public SimulatorCXFSyncWebServiceClient() throws MalformedURLException {
-        this.client = new CXFWebServiceClient(CXFWebServiceMode.SYNC);
+    public SimulatorCXFAsyncWebServiceClient() throws MalformedURLException {
+        this.client = new CXFWebServiceClient(CXFWebServiceMode.ASYNC);
 	}
 
 	public void simulate() throws Exception {
