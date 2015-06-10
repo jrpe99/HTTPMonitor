@@ -1,17 +1,18 @@
 package dk.jrpe.monitor.ejb;
 
-import dk.jrpe.monitor.ejb.remote.MontorSessionBeanRemote;
 import javax.ejb.Stateless;
+
+import dk.jrpe.monitor.ejb.remote.MontorSessionBeanRemote;
 
 /**
  *
  * @author Jörgen Persson
  */
 @Stateless
-public class MonitorSessionBean implements MontorSessionBeanRemote, MonitorSessionBeanLocal {
+public class MonitorSessionBean implements MonitorSessionBeanLocal, MontorSessionBeanRemote {
 
-    @Override
-    public String test() {
-        return "MontorSessionBean response";
-    }
+	@Override
+	public String test() {
+		return "Test MonitorSessionBean";
+	}
 }

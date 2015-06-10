@@ -7,7 +7,7 @@ import javax.ejb.Remote;
  * @author Jörgen Persson
  */
 @Remote
-public interface MontorSessionBeanRemote {
+public interface MonitorSessionBeanRemote {
 
     String test();
     

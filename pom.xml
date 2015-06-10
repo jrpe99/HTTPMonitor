@@ -9,10 +9,10 @@
     <name>monitor</name>
 
     <modules>
+        <module>monitor-ejb-remote</module>
+        <module>monitor-ejb</module>
         <module>monitor-ws</module>
         <module>monitor-war</module>
-        <module>monitor-ejb</module>
-        <module>monitor-ejb-remote</module>
     </modules>
 
     <properties>
@@ -71,13 +71,7 @@
         <dependencies>
             <dependency>
                 <groupId>dk.jrpe.monitor</groupId>
-                <artifactId>monitor-war</artifactId>
-                <version>${project.version}</version>
-                <type>war</type>
-            </dependency>
-            <dependency>
-                <groupId>dk.jrpe.monitor</groupId>
-                <artifactId>monitor-ws</artifactId>
+                <artifactId>monitor-ejb-remote</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
             </dependency>
@@ -89,9 +83,15 @@
             </dependency>
             <dependency>
                 <groupId>dk.jrpe.monitor</groupId>
-                <artifactId>monitor-ejb-remote</artifactId>
+                <artifactId>monitor-ws</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>dk.jrpe.monitor</groupId>
+                <artifactId>monitor-war</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
             </dependency>
 			<dependency>
 				<groupId>javax</groupId>
