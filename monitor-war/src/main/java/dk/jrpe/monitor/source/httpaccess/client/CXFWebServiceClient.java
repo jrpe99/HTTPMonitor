@@ -44,7 +44,7 @@ public class CXFWebServiceClient extends ServiceClient {
     	HTTPAccessData data = HTTPAccessTOFactory.convertToCXFObject(to);
     	data.setCommand(command);
     	httpAccessDataPort.sendHTTPAccessData(data);
-		System.out.println("CXFWebServiceClient sendToServerSync - Finished");
+		System.out.println(this.getClass().getName() + " sendToServerSync - Finished");
 	}
 
 	private void sendToServerAsync(HTTPAccessTO to, String command) throws Exception {
@@ -53,10 +53,10 @@ public class CXFWebServiceClient extends ServiceClient {
     	WebServiceAsyncHandler webServiceAsyncHandler = new WebServiceAsyncHandler();
     	Future<?> response = httpAccessDataPort.sendHTTPAccessDataAsync(data, webServiceAsyncHandler);
     	while(!response.isDone()) {
-    		System.out.println("sendToServerAsync - WAIT");
+    		System.out.println(this.getClass().getName() + " sendToServerAsync - WAIT");
     		Thread.sleep(100);
     	}
-		System.out.println("CXFWebServiceClient sendToServerAsync - Finished");
-		System.out.println("CXFWebServiceClient sendToServerAsync - response from server : " + webServiceAsyncHandler.getStatus());
+		System.out.println(this.getClass().getName() + " sendToServerAsync - Finished");
+		System.out.println(this.getClass().getName() + " sendToServerAsync - response from server : " + webServiceAsyncHandler.getStatus());
 	}
 }
