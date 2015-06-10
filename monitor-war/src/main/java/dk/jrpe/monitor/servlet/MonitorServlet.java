@@ -20,6 +20,9 @@ import dk.jrpe.monitor.ejb.MonitorSessionBeanLocal;
 @WebServlet(urlPatterns="/monitorservlet")
 public class MonitorServlet extends HttpServlet {
 
+	/*
+	 * This works in Glassfish but not in Tomcat8 since it does not support full JEE
+	 */
 	@EJB 
 	MonitorSessionBeanLocal monitorSessionBean;
 	
