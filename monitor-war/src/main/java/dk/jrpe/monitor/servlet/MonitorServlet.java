@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dk.jrpe.monitor.ejb.MonitorSessionBean;
+
 /**
  *
  * @author Jörgen Persson
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MonitorServlet extends HttpServlet {
 
 	@EJB 
+	MonitorSessionBean monitorSessionBean;
 	
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
