@@ -10,6 +10,8 @@ import javax.ejb.Stateless;
 @Stateless
 public class MonitorSessionBean implements MontorSessionBeanRemote, MonitorSessionBeanLocal {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @Override
+    public String test() {
+        return "MontorSessionBean response";
+    }
 }

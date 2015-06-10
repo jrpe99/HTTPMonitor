@@ -12,6 +12,8 @@ import javax.ejb.Local;
  * @author Z6PRN
  */
 @Local
-public interface MonitorSessionBeanLocal {
+public interface MontorSessionBeanLocal {
+
+    String test();
     
 }
