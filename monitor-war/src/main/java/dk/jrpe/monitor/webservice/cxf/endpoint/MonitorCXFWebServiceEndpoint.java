@@ -20,7 +20,7 @@ import dk.jrpe.monitor.webservice.cxf.generated.endpoint.SendHTTPAccessDataRespo
  * which is the input format of the {@link dk.jrpe.monitor.service.command.CommandHandler}.
  * @author Jörgen Persson
  */
-public class HTTPAccessDataWSImpl implements HTTPAccessDataPort {
+public class MonitorCXFWebServiceEndpoint implements HTTPAccessDataPort {
     /**
      * The WebServiceContext can be used to retrieve special attributes like the 
      * user principal. Normally it is not needed

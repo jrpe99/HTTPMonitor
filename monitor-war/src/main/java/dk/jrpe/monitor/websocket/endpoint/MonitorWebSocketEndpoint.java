@@ -16,7 +16,7 @@ import javax.websocket.server.ServerEndpoint;
 @ServerEndpoint(
     value = "/monitor"
 )
-public class MonitoringEndpoint {
+public class MonitorWebSocketEndpoint {
 
     /**
      * Create the monitoring service when the WebSocket end-point is created.
