@@ -10,17 +10,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dk.jrpe.monitor.ejb.MonitorSessionBean;
+import dk.jrpe.monitor.ejb.MonitorSessionBeanLocal;
 
 /**
  *
  * @author Jörgen Persson
  */
+@SuppressWarnings("serial")
 @WebServlet(urlPatterns="/monitorservlet")
 public class MonitorServlet extends HttpServlet {
 
 	@EJB 
-	MonitorSessionBean monitorSessionBean;
+	MonitorSessionBeanLocal monitorSessionBean;
 	
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,6 +43,7 @@ public class MonitorServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet MonitorServlet at " + request.getContextPath() + "</h1>");
+            out.println("Session bean test : " + monitorSessionBean.test());
             out.println("</body>");
             out.println("</html>");
         }

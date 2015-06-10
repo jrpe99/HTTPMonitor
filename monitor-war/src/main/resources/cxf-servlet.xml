@@ -9,7 +9,7 @@
 		address="/HTTPAccessServicePort" 
 		serviceName="data:HTTPAccessDataService" 
 		endpointName="data:HTTPAccessDataPort"
-		implementor="dk.jrpe.monitor.webservice.cxf.endpoint.HTTPAccessDataWSImpl">
+		implementor="dk.jrpe.monitor.webservice.cxf.endpoint.MonitorCXFWebServiceEndpoint">
 		
 		<!--jaxws:properties> <entry key="schema-validation-enabled" value="true" /> </jaxws:properties -->
 	</jaxws:endpoint>
