@@ -10,17 +10,9 @@
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
-        <servlet-name>MonitorServlet</servlet-name>
-        <servlet-class>dk.jrpe.monitor.servlet.MonitorServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>cxf</servlet-name>
         <url-pattern>/services/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>MonitorServlet</servlet-name>
-        <url-pattern>/monitorservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>60</session-timeout>
