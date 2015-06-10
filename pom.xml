@@ -12,7 +12,7 @@
         <module>monitor-ws</module>
         <module>monitor-war</module>
         <module>monitor-ejb</module>
-        <module>montor-ejb-remote</module>
+        <module>monitor-ejb-remote</module>
     </modules>
 
     <properties>
@@ -84,6 +84,12 @@
             <dependency>
                 <groupId>dk.jrpe.monitor</groupId>
                 <artifactId>monitor-ejb</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>dk.jrpe.monitor</groupId>
+                <artifactId>monitor-ejb-remote</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
             </dependency>

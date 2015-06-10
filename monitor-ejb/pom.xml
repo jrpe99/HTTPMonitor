@@ -13,14 +13,9 @@
 	<packaging>ejb</packaging>
 	<name>monitor-ejb</name>
 
-	<properties>
-		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<dependencies>
 		<dependency>
-			<groupId>dk.jrpe.monitor.ejb.remote</groupId>
+			<groupId>dk.jrpe.monitor</groupId>
 			<artifactId>montor-ejb-remote</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
