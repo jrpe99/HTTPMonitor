@@ -1,3 +1,5 @@
 /monitor-ws/target/
 /.settings/
 /.project
+/monitor-ejb/target/
+/montor-ejb-remote/target/
