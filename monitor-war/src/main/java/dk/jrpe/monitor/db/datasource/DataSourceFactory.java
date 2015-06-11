@@ -3,6 +3,16 @@ package dk.jrpe.monitor.db.datasource;
 import dk.jrpe.monitor.db.datasource.cassandra.CassandraDataSource;
 import dk.jrpe.monitor.db.datasource.inmemory.InMemoryDataSource;
 
+/**
+ * Singelton.
+ * Factory class for data-sources. A default data-source is initialized
+ * when the singelton initializes.
+ * 
+ * <p> Method {@code get()} will return the initialized data-source.
+ * <p> Method {@code set(DataSourceFactory.Type source)} is used for JUnit and not to dynamically change the data-source.
+ * @author Jörgen Persson
+ *
+ */
 public final class DataSourceFactory {
 	private HttpAccessDataSource dataSource;
 	
@@ -10,6 +20,9 @@ public final class DataSourceFactory {
         static final DataSourceFactory instance = new DataSourceFactory();
     }
 
+    /**
+     * Set default data-source
+     */
 	private DataSourceFactory() {
 		/*
 		 * Init possibly from property file
@@ -28,7 +41,7 @@ public final class DataSourceFactory {
 
 	/**
 	 * Set data-source (override the default)
-	 * NOTE, used for JUnit
+	 * NOTE, used for JUnit and not to dynamically change the data-source.
 	 * @param source
 	 */
 	public static void set(DataSourceFactory.Type source) {
