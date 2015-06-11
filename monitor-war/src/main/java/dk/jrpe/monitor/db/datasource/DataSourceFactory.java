@@ -14,8 +14,8 @@ public final class DataSourceFactory {
 		/*
 		 * Init possibly from property file
 		 */
-		//this.dataSource = Factory.IN_MEMORY.get();
-		this.dataSource = Type.CASSANDRA.get();
+		this.dataSource = Type.IN_MEMORY.get();
+		//this.dataSource = Type.CASSANDRA.get();
 	}
 
 	/**
