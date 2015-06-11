@@ -1,4 +1,4 @@
-package dk.jrpe.monitor.db.inmemory;
+package dk.jrpe.monitor.db.inmemory.httpaccess;
 
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import java.util.List;

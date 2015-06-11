@@ -1,4 +1,4 @@
-package dk.jrpe.monitor.db.inmemory.junit;
+package dk.jrpe.monitor.db.inmemory.httpaccess.junit;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
-import dk.jrpe.monitor.db.inmemory.InMemoryDataBase;
+import dk.jrpe.monitor.db.inmemory.httpaccess.InMemoryDataBase;
 import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
 
 public class InMemoryDataBaseTest {
