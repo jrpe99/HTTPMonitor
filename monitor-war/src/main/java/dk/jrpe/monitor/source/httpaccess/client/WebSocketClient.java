@@ -7,7 +7,7 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import dk.jrpe.monitor.db.httpaccess.to.JsonHTTPAccessTO;
 import dk.jrpe.monitor.json.JSONMapper;
 import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
-import dk.jrpe.monitor.websocket.client.WebsocketClientEndpoint;
+import dk.jrpe.monitor.websocket.endpoint.WebsocketClientEndpoint;
 
 public class WebSocketClient extends ServiceClient {
 

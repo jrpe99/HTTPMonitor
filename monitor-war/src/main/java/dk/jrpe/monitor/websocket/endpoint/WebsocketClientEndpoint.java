@@ -1,4 +1,4 @@
-package dk.jrpe.monitor.websocket.client;
+package dk.jrpe.monitor.websocket.endpoint;
 
 import java.io.IOException;
 import java.net.URI;
