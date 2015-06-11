@@ -5,7 +5,7 @@ Tested environment
 - Eclipse eclipse-jee-luna-SR2-win32-x86_64
 - Tomcat - apache-tomcat-8.0.23-windows-x64
 - NetBeans 8.0.2
-- Glassfish 4.1
+- Glassfish 4.1 (application deployed from NetBeans)
 
 Build/Deploy
 - cd monitor
