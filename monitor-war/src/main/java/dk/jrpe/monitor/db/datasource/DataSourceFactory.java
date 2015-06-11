@@ -48,6 +48,9 @@ public final class DataSourceFactory {
 		InstanceHolder.instance.dataSource = source.get();
 	}
 	
+	/**
+	 * Enumeration containing all possible data-sources for HTTP access data 
+	 */
 	public enum Type {
 	    CASSANDRA(new CassandraDataSource()), IN_MEMORY(new InMemoryDataSource());
 	    
