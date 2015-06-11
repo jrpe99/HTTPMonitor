@@ -1,6 +1,6 @@
 package dk.jrpe.monitor.service;
 
-import dk.jrpe.monitor.db.datasource.DataSource;
+import dk.jrpe.monitor.db.datasource.HttpAccessDataSource;
 import dk.jrpe.monitor.db.datasource.DataSourceFactory;
 import dk.jrpe.monitor.service.command.CommandHandler;
 import dk.jrpe.monitor.task.HttpRequestsMonitorTask;
@@ -42,7 +42,7 @@ public class MonitoringService {
      */
     private MonitoringService() {
         try {
-            DataSource dataSource = DataSourceFactory.getDefault();
+            HttpAccessDataSource dataSource = DataSourceFactory.getDefault();
             this.monitoringTaskList.add(new HttpRequestsMonitorTask(dataSource, this.sessionList, 1000));
             this.monitoringTaskList.add(new HttpRequestsPerMinuteMonitorTask(dataSource, this.sessionList, 1000));
             start();

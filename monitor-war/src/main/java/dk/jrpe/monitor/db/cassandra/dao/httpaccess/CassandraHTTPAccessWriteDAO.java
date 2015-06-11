@@ -11,7 +11,7 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
     }
     
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#saveHttpAccess(HTTPAccessTO, int)}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#saveHttpAccess(HTTPAccessTO, int)}
      */
     public void saveHttpAccess(HTTPAccessTO to, int hour) {
         StringBuilder cql = new StringBuilder();
@@ -29,7 +29,7 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
     }
 
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#updateHttpSuccess(HTTPAccessTO)}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#updateHttpSuccess(HTTPAccessTO)}
      */
     public void updateHttpSuccess(HTTPAccessTO to) {
         StringBuilder cql = new StringBuilder();
@@ -42,7 +42,7 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
     }
 
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#updateHttpSuccessPerMinute(HTTPAccessTO)}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#updateHttpSuccessPerMinute(HTTPAccessTO)}
      */
     public void updateHttpSuccessPerMinute(HTTPAccessTO to) {
         StringBuilder cql = new StringBuilder();
@@ -56,7 +56,7 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
     }
 
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#updateHttpFailed(HTTPAccessTO)}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#updateHttpFailed(HTTPAccessTO)}
      */
     public void updateHttpFailed(HTTPAccessTO to) {
         StringBuilder cql = new StringBuilder();
@@ -69,7 +69,7 @@ public class CassandraHTTPAccessWriteDAO extends CassandraDAO {
     }
 
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#updateHttpFailedPerMinute(HTTPAccessTO)}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#updateHttpFailedPerMinute(HTTPAccessTO)}
      */
     public void updateHttpFailedPerMinute(HTTPAccessTO to) {
         StringBuilder cql = new StringBuilder();

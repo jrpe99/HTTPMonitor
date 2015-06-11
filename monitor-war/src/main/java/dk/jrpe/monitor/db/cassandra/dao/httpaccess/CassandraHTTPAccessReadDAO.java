@@ -16,7 +16,7 @@ public class CassandraHTTPAccessReadDAO extends CassandraDAO {
     }
     
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#getHttpSuccess()}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#getHttpSuccess()}
      */
     public List<Row> getHttpSuccess() {
         String cql = "SELECT ip_address, requests from httpaccess.http_success";
@@ -25,7 +25,7 @@ public class CassandraHTTPAccessReadDAO extends CassandraDAO {
     }
 
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#getHttpFailed()}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#getHttpFailed()}
      */
     public List<Row> getHttpFailed() {
         String cql = "SELECT ip_address, requests from httpaccess.http_failed";
@@ -34,7 +34,7 @@ public class CassandraHTTPAccessReadDAO extends CassandraDAO {
     }
 
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#getHttpSuccessPerMinute(String, String, String)}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#getHttpSuccessPerMinute(String, String, String)}
      */
     public List<Row> getHttpSuccessPerMinute(String date, String from, String to) {
         StringBuilder cql = new StringBuilder();
@@ -50,7 +50,7 @@ public class CassandraHTTPAccessReadDAO extends CassandraDAO {
     }
 
     /**
-     * See {@link dk.jrpe.monitor.db.datasource.DataSource#getHttpFailedPerMinute(String, String, String)}
+     * See {@link dk.jrpe.monitor.db.datasource.HttpAccessDataSource#getHttpFailedPerMinute(String, String, String)}
      */
     public List<Row> getHttpFailedPerMinute(String date, String from, String to) {
         StringBuilder cql = new StringBuilder();

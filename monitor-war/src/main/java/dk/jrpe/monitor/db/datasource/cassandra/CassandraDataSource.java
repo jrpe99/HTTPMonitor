@@ -4,7 +4,7 @@ import dk.jrpe.monitor.db.cassandra.CassandraConnectionHandler;
 import dk.jrpe.monitor.db.cassandra.dao.httpaccess.CassandraHTTPAccessReadDAO;
 import dk.jrpe.monitor.db.cassandra.dao.httpaccess.CassandraHTTPAccessWriteDAO;
 import com.datastax.driver.core.Row;
-import dk.jrpe.monitor.db.datasource.DataSource;
+import dk.jrpe.monitor.db.datasource.HttpAccessDataSource;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * Data source for a Cassandra database.
  * @author Jörgen Persson
  */
-public class CassandraDataSource implements DataSource {
+public class CassandraDataSource implements HttpAccessDataSource {
 
     private CassandraConnectionHandler conn = null;
     private CassandraHTTPAccessReadDAO readDao = null;

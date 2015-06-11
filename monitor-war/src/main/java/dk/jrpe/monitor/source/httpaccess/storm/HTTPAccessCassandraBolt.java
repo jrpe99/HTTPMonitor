@@ -9,7 +9,7 @@ import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import dk.jrpe.monitor.db.cassandra.dao.httpaccess.HTTPAccessDAO;
-import dk.jrpe.monitor.db.datasource.DataSource;
+import dk.jrpe.monitor.db.datasource.HttpAccessDataSource;
 import dk.jrpe.monitor.db.datasource.DataSourceFactory;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class HTTPAccessCassandraBolt extends BaseRichBolt {
     private OutputCollector collector;
     private HTTPAccessDAO httpAccessDAO = null;
-    private DataSource dataSource = DataSourceFactory.getDefault();
+    private HttpAccessDataSource dataSource = DataSourceFactory.getDefault();
     
     @SuppressWarnings("rawtypes")
     public void prepare(Map conf, TopologyContext context, OutputCollector collector) {

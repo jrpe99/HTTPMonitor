@@ -1,6 +1,6 @@
 package dk.jrpe.monitor.db.cassandra.dao.httpaccess;
 
-import dk.jrpe.monitor.db.datasource.DataSource;
+import dk.jrpe.monitor.db.datasource.HttpAccessDataSource;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import java.time.ZonedDateTime;
 
@@ -14,9 +14,9 @@ import java.time.ZonedDateTime;
  */
 public class HTTPAccessDAO {
 
-    private DataSource dataSource = null;
+    private HttpAccessDataSource dataSource = null;
     
-    public HTTPAccessDAO(DataSource dataSource) {
+    public HTTPAccessDAO(HttpAccessDataSource dataSource) {
         this.dataSource = dataSource;
     }
     

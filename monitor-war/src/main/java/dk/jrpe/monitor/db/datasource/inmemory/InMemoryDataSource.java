@@ -1,7 +1,7 @@
 package dk.jrpe.monitor.db.datasource.inmemory;
 
 import dk.jrpe.monitor.db.inmemory.httpaccess.InMemoryDataBase;
-import dk.jrpe.monitor.db.datasource.DataSource;
+import dk.jrpe.monitor.db.datasource.HttpAccessDataSource;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * Data source for the in memory database.
  * @author Jörgen Persson
  */
-public class InMemoryDataSource implements DataSource {
+public class InMemoryDataSource implements HttpAccessDataSource {
 
     private final InMemoryDataBase dataBase = InMemoryDataBase.getInstance();
 

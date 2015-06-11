@@ -8,7 +8,7 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
  * Data source for HTTP Access data 
  * @author Jörgen Persson
  */
-public interface DataSource extends AutoCloseable {
+public interface HttpAccessDataSource extends AutoCloseable {
 	/**
 	 * Get all successful request. 
 	 * @return a list of {@link dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO} objects. 

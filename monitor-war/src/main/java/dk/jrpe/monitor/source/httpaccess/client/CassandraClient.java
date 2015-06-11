@@ -1,7 +1,7 @@
 package dk.jrpe.monitor.source.httpaccess.client;
 
 import dk.jrpe.monitor.db.cassandra.dao.httpaccess.HTTPAccessDAO;
-import dk.jrpe.monitor.db.datasource.DataSource;
+import dk.jrpe.monitor.db.datasource.HttpAccessDataSource;
 import dk.jrpe.monitor.db.datasource.DataSourceFactory;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 
@@ -11,7 +11,7 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
  *
  */
 public class CassandraClient {
-    private final DataSource dataSource = DataSourceFactory.getDefault();
+    private final HttpAccessDataSource dataSource = DataSourceFactory.getDefault();
     
     /**
      * Save and update the Cassandra database.
@@ -19,7 +19,7 @@ public class CassandraClient {
      * @throws Exception if not possible to connect to the database.
      */
 	public void saveAndUpdate(HTTPAccessTO to) throws Exception {
-        try (DataSource localDataSource = this.dataSource;) {
+        try (HttpAccessDataSource localDataSource = this.dataSource;) {
             HTTPAccessDAO httpAccessDAO = new HTTPAccessDAO(localDataSource);
             httpAccessDAO.saveAndUpdate(to);
         }

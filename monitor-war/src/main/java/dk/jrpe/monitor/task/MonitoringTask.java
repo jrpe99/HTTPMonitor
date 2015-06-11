@@ -1,6 +1,6 @@
 package dk.jrpe.monitor.task;
 
-import dk.jrpe.monitor.db.datasource.DataSource;
+import dk.jrpe.monitor.db.datasource.HttpAccessDataSource;
 import java.util.List;
 import javax.websocket.Session;
 
@@ -14,9 +14,9 @@ public abstract class MonitoringTask implements Runnable {
     private int delay = 1000;
     private List<Session> sessionList = null;
 
-    private DataSource dataSource = null;
+    private HttpAccessDataSource dataSource = null;
 
-    MonitoringTask(DataSource dataSource, List<Session> sessionList, int delay) {
+    MonitoringTask(HttpAccessDataSource dataSource, List<Session> sessionList, int delay) {
         this.sessionList = sessionList;
         this.delay = delay;
         this.dataSource = dataSource;
@@ -31,7 +31,7 @@ public abstract class MonitoringTask implements Runnable {
         return delay;
     }
 
-    public DataSource getDataSouce() {
+    public HttpAccessDataSource getDataSouce() {
         return dataSource;
     }
     

@@ -10,8 +10,8 @@ import dk.jrpe.monitor.db.datasource.inmemory.InMemoryDataSource;
 public enum DataSourceFactory {
     CASSANDRA(new CassandraDataSource()), IN_MEMORY(new InMemoryDataSource());
     
-    private final DataSource dataSource;
-    DataSourceFactory(DataSource dataSource) {
+    private final HttpAccessDataSource dataSource;
+    DataSourceFactory(HttpAccessDataSource dataSource) {
         this.dataSource = dataSource;
     }
     
@@ -19,7 +19,7 @@ public enum DataSourceFactory {
      * Get default data source.
      * @return the instance of the default data source.
      */
-    public static DataSource getDefault() {
+    public static HttpAccessDataSource getDefault() {
 //        return CASSANDRA.get();
         return IN_MEMORY.get();
     }
@@ -28,7 +28,7 @@ public enum DataSourceFactory {
      * Get current data source
      * @return the instance of current data source.
      */
-    public DataSource get() {
+    public HttpAccessDataSource get() {
         return this.dataSource;
     }
 }
