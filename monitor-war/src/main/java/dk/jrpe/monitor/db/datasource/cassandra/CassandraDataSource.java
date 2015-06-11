@@ -1,13 +1,15 @@
 package dk.jrpe.monitor.db.datasource.cassandra;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.datastax.driver.core.Row;
+
 import dk.jrpe.monitor.db.cassandra.CassandraConnectionHandler;
 import dk.jrpe.monitor.db.cassandra.dao.httpaccess.CassandraHTTPAccessReadDAO;
 import dk.jrpe.monitor.db.cassandra.dao.httpaccess.CassandraHTTPAccessWriteDAO;
-import com.datastax.driver.core.Row;
 import dk.jrpe.monitor.db.datasource.HttpAccessDataSource;
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Data source for a Cassandra database.
@@ -68,6 +70,10 @@ public class CassandraDataSource implements HttpAccessDataSource {
             this.conn.close();
         }
     }
+    
+	@Override public void clear() {
+		throw new RuntimeException("Not supported");
+	}
 
     /**
      * Adapt the result from the Cassandra database to internal representation.

@@ -25,7 +25,7 @@ import javax.websocket.Session;
  * 
  * @author Jörgen Persson
  */
-public class MonitoringService {
+public final class MonitoringService {
     private static class InstanceHolder {
         static final MonitoringService instance = new MonitoringService();
     }
@@ -42,7 +42,7 @@ public class MonitoringService {
      */
     private MonitoringService() {
         try {
-            HttpAccessDataSource dataSource = DataSourceFactory.getDefault();
+            HttpAccessDataSource dataSource = DataSourceFactory.get();
             this.monitoringTaskList.add(new HttpRequestsMonitorTask(dataSource, this.sessionList, 1000));
             this.monitoringTaskList.add(new HttpRequestsPerMinuteMonitorTask(dataSource, this.sessionList, 1000));
             start();

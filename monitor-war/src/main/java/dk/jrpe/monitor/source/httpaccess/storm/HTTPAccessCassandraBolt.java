@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class HTTPAccessCassandraBolt extends BaseRichBolt {
     private OutputCollector collector;
     private HTTPAccessDAO httpAccessDAO = null;
-    private HttpAccessDataSource dataSource = DataSourceFactory.getDefault();
+    private HttpAccessDataSource dataSource = DataSourceFactory.get();
     
     @SuppressWarnings("rawtypes")
     public void prepare(Map conf, TopologyContext context, OutputCollector collector) {

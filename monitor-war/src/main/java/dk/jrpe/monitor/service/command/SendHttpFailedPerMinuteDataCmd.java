@@ -11,7 +11,7 @@ import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
  * @author Jörgen Persson
  */
 public class SendHttpFailedPerMinuteDataCmd extends Command {
-    private final HttpAccessDataSource dataSource = DataSourceFactory.getDefault();
+    private final HttpAccessDataSource dataSource = DataSourceFactory.get();
 
     @Override public void execute(CommandHandler cmdHandler) {
         JsonHTTPAccessTO to = JSONMapper.toJsonHTTPAccessTO(cmdHandler.getJson());

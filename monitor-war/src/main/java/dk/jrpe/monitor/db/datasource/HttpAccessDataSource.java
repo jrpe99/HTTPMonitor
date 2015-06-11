@@ -10,6 +10,10 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
  */
 public interface HttpAccessDataSource extends AutoCloseable {
 	/**
+	 * Clear ALL data in the data-source.
+	 */
+	public void clear();
+	/**
 	 * Get all successful request. 
 	 * @return a list of {@link dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO} objects. 
 	 */

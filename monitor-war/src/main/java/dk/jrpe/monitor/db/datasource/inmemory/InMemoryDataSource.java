@@ -15,20 +15,19 @@ public class InMemoryDataSource implements HttpAccessDataSource {
     private final InMemoryDataBase dataBase = InMemoryDataBase.getInstance();
 
     @Override public List<HTTPAccessTO> getHttpSuccess() {
-        return dataBase.getHttpSuccess();
+        return this.dataBase.getHttpSuccess();
     }
 
-    @Override
-    public List<HTTPAccessTO> getHttpFailed() {
-        return dataBase.getHttpFailed();
+    @Override public List<HTTPAccessTO> getHttpFailed() {
+        return this.dataBase.getHttpFailed();
     }
 
     @Override public List<HTTPAccessTO> getHttpSuccessPerMinute(String date, String from, String to) {
-        return dataBase.getHttpSuccessPerMinute(date, from, to);
+        return this.dataBase.getHttpSuccessPerMinute(date, from, to);
     }
     
     @Override public List<HTTPAccessTO> getHttpFailedPerMinute(String date, String from, String to) {
-        return dataBase.getHttpFailedPerMinute(date, from, to);
+        return this.dataBase.getHttpFailedPerMinute(date, from, to);
     }
 
     @Override public void saveHttpAccess(HTTPAccessTO to, int hour) {
@@ -36,19 +35,19 @@ public class InMemoryDataSource implements HttpAccessDataSource {
     }
 
     @Override public void updateHttpSuccess(HTTPAccessTO to) {
-        dataBase.updateHttpSuccess(to);
+        this.dataBase.updateHttpSuccess(to);
     }
 
     @Override public void updateHttpSuccessPerMinute(HTTPAccessTO to) {
-        dataBase.updateHttpSuccessPerMinute(to);
+        this.dataBase.updateHttpSuccessPerMinute(to);
     }
 
     @Override public void updateHttpFailed(HTTPAccessTO to) {
-        dataBase.updateHttpFailed(to);
+        this.dataBase.updateHttpFailed(to);
     }
 
     @Override public void updateHttpFailedPerMinute(HTTPAccessTO to) {
-        dataBase.updateHttpFailedPerMinute(to);
+        this.dataBase.updateHttpFailedPerMinute(to);
     }
 
     @Override public void open() {
@@ -58,4 +57,8 @@ public class InMemoryDataSource implements HttpAccessDataSource {
     @Override public void close() throws Exception {
         // NOT USED
     }
+
+	@Override public void clear() {
+		this.dataBase.clear();
+	}
 }

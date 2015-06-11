@@ -11,7 +11,7 @@ import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
  *
  */
 public class CassandraClient {
-    private final HttpAccessDataSource dataSource = DataSourceFactory.getDefault();
+    private final HttpAccessDataSource dataSource = DataSourceFactory.get();
     
     /**
      * Save and update the Cassandra database.
