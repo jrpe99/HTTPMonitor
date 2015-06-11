@@ -28,6 +28,7 @@ public final class DataSourceFactory {
 
 	/**
 	 * Set data-source (override the default)
+	 * NOTE, used for JUnit
 	 * @param source
 	 */
 	public static void set(DataSourceFactory.Type source) {
