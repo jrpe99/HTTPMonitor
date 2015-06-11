@@ -42,6 +42,16 @@ public class InMemoryDataBase {
         return InstanceHolder.instance;
     }
 
+    /**
+     * Clear the database - remove ALL data
+     */
+    public void clear() {
+    	this.httpSuccess.clear();
+    	this.httpFailed.clear();
+    	this.httpSuccessPerMinute.clear();
+    	this.httpFailedPerMinute.clear();
+    }
+    
     public List<HTTPAccessTO> getHttpSuccess() {
         return this.httpSuccess.entrySet().stream()
                 .map((entry) -> new HTTPAccessTO.Builder()
@@ -67,28 +77,28 @@ public class InMemoryDataBase {
     }
 
     public void updateHttpSuccess(HTTPAccessTO to) {
-        Long requests = this.httpSuccess.putIfAbsent(to.getIpAddress(), to.getRequests());
+        Long requests = this.httpSuccess.putIfAbsent(to.getIpAddress(), new Long("1"));
         if(requests != null) {
             this.httpSuccess.put(to.getIpAddress(), ++requests);
         }
     }
 
     public void updateHttpSuccessPerMinute(HTTPAccessTO to) {
-        Long requests = this.httpSuccessPerMinute.putIfAbsent(to.getDateToMinute(), to.getRequests());
+        Long requests = this.httpSuccessPerMinute.putIfAbsent(to.getDateToMinute(), new Long("1"));
         if(requests != null) {
             this.httpSuccessPerMinute.put(to.getDateToMinute(), ++requests);
         }
     }
 
     public void updateHttpFailed(HTTPAccessTO to) {
-        Long requests = this.httpFailed.putIfAbsent(to.getIpAddress(), to.getRequests());
+        Long requests = this.httpFailed.putIfAbsent(to.getIpAddress(), new Long("1"));
         if(requests != null) {
             this.httpFailed.put(to.getIpAddress(), ++requests);
         }
     }
 
     public void updateHttpFailedPerMinute(HTTPAccessTO to) {
-        Long requests = this.httpFailedPerMinute.putIfAbsent(to.getDateToMinute(), to.getRequests());
+        Long requests = this.httpFailedPerMinute.putIfAbsent(to.getDateToMinute(), new Long("1"));
         if(requests != null) {
             this.httpFailedPerMinute.put(to.getDateToMinute(), ++requests);
         }
