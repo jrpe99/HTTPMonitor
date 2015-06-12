@@ -55,8 +55,8 @@ public abstract class MonitorService {
      */
     MonitorService() {
         HttpAccessDataSource dataSource = DataSourceFactory.get();
-        this.monitoringTaskList.add(new HttpRequestsMonitorTask(dataSource, this.sessionList, 1000));
-        this.monitoringTaskList.add(new HttpRequestsPerMinuteMonitorTask(dataSource, this.sessionList, 1000));
+        this.monitoringTaskList.add(new HttpRequestsMonitorTask(dataSource, this.sessionList, 300));
+        this.monitoringTaskList.add(new HttpRequestsPerMinuteMonitorTask(dataSource, this.sessionList, 300));
     }
     
     /**

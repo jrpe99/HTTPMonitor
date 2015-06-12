@@ -28,13 +28,13 @@ public class MonitorWebSocketEndpoint {
      * The service is started when the first session 
      * is added.
      */
-    private final AtomicBoolean serviceInitialized = new AtomicBoolean(false);
+    private static final AtomicBoolean serviceInitialized = new AtomicBoolean(false);
     
 
-    private MonitorService monitorService;
+    private static MonitorService monitorService;
 
     /**
-     * Create the monitoring service when the WebSocket end-point is created.
+     * Inject the monitoring service (Singleton) when the WebSocket end-point is created.
      */
     @EJB
     private EnterpriseMonitorService enterpriseMonitorService;
@@ -48,15 +48,17 @@ public class MonitorWebSocketEndpoint {
      */
     @OnOpen
     public void handleOpenConnection(Session session) {
-        if(!this.serviceInitialized.getAndSet(true)) {
-        	if(this.enterpriseMonitorService == null) {
-        		this.monitorService = StandardMonitorService.getInstance();
-        	} else {
-        		this.monitorService = this.enterpriseMonitorService;
-        	}
-        	this.monitorService.start();
+        synchronized(serviceInitialized) {
+            if(!serviceInitialized.getAndSet(true)) {
+                    if(enterpriseMonitorService == null) {
+                            monitorService = StandardMonitorService.getInstance();
+                    } else {
+                            monitorService = enterpriseMonitorService;
+                    }
+                    monitorService.start();
+            }
+            monitorService.addSession(session);
         }
-        this.monitorService.addSession(session);
     }
 
     /**
@@ -68,7 +70,7 @@ public class MonitorWebSocketEndpoint {
      */
     @OnClose
     public void handleClosedConnection(Session session, CloseReason reason) {
-        this.monitorService.removeSession(session);
+        monitorService.removeSession(session);
     }
 
     /**
@@ -78,6 +80,6 @@ public class MonitorWebSocketEndpoint {
      */
     @OnMessage
     public void handleMessage(String json, Session session){
-        this.monitorService.executeCommand(json, session);
+        monitorService.executeCommand(json, session);
     }
 }
