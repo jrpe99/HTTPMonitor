@@ -17,6 +17,12 @@ import dk.jrpe.monitor.service.StandardMonitorService;
 /**
  * WebSocket end-point for the monitoring service.
  * 
+ * <p> The method {@code handleOpenConnection(Session)} checks if the monitor service 
+ * {@code monitorService} has been initialized. If not, it will use either an
+ * enterprise service for a full JEE7 server (like Glassfish 4.1) or a standard service for a server not
+ * supporting full JEE7 (like Tomcat 8).
+ * a 
+ * 
  * @author Jörgen Persson
  */
 @ServerEndpoint(value = "/monitor")
@@ -37,8 +43,11 @@ public class MonitorWebSocketEndpoint {
 	private EnterpriseMonitorService enterpriseMonitorService;
 
 	/**
-	 * When a new client connects, add the client session to the monitoring
-	 * service.
+	 * Synchronized on {@code serviceInitialized}.
+	 * <br>
+	 * When a new client connects, add the client session to the monitoring service.
+	 * If the the monitoring service is not initialized then initialized the 
+	 * proper service.
 	 * 
 	 * @param session
 	 */
