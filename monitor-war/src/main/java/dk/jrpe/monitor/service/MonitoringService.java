@@ -29,6 +29,13 @@ import javax.websocket.Session;
  * which are added to a monitor task list. When all tasks have been added
  * they are scheduled (started) using a ScheduledExecutorService.
  * 
+ * <p> The method {@code addSession(Session)} is called when a new WebSocket session is opened.
+ * 
+ * <p> The method {@code removeSession(Session)} is called when a new WebSocket session is closed.
+ * 
+ * <p> The method {@code executeCommand(String, Session)} is called when a message is received form 
+ * a WebSocket session.
+ * 
  * @author Jörgen Persson
  */
 
@@ -44,7 +51,7 @@ public class MonitoringService {
     private ManagedScheduledExecutorService managedTaskScheduler;
 
     /**
-     * Otherwise a non-managed will be used.
+     * Otherwise a non-managed will be used, which is initialized in the method {@code start()}.
      */
     private ScheduledExecutorService taskScheduler = null;
 
@@ -54,7 +61,19 @@ public class MonitoringService {
      * is added.
      */
     private final AtomicBoolean serviceStarted = new AtomicBoolean(false);
+    
+    /**
+     * Contains all monitoring task, which are added in the constructor, 
+     * and started in the method {@code start()}.
+     */
     private final List<MonitoringTask> monitoringTaskList = new ArrayList<>();
+    
+    /**
+     * Contains all current WebSocket session. Sessions are added with
+     * method {@code addSession(Session)} and removed with method 
+     * {@code removeSession(Session)}. All monitoring task have a reference
+     * to this list.
+     */
     private final List<Session> sessionList = new CopyOnWriteArrayList<>();
 
     /**
@@ -70,7 +89,8 @@ public class MonitoringService {
     
     /**
      * Add a WebSocket session to each monitoring task.
-     * 
+     * If the monitoring tasks have not been scheduled (started),
+     * then call method {@code start()}.
      * @param session the WebSocket session
      */
     public void addSession(Session session) {
@@ -113,6 +133,8 @@ public class MonitoringService {
 
     /**
      * Schedule all monitoring tasks.
+     * If {@code managedTaskScheduler} is {@code null} the application is not running
+     * in a full JEE7 container, like Tomcat 8.  
      */
     private void start() {
     	if(this.managedTaskScheduler != null) {
