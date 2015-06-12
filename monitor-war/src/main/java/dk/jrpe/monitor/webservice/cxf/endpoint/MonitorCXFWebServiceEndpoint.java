@@ -22,7 +22,6 @@ import dk.jrpe.monitor.webservice.cxf.generated.endpoint.SendHTTPAccessDataRespo
  * which is the input format of the {@link dk.jrpe.monitor.service.command.CommandHandler}.
  * @author Jörgen Persson
  */
-@WebService
 public class MonitorCXFWebServiceEndpoint implements HTTPAccessDataPort {
     /**
      * The WebServiceContext can be used to retrieve special attributes like the 
@@ -34,19 +33,16 @@ public class MonitorCXFWebServiceEndpoint implements HTTPAccessDataPort {
     /**
      * This method is used for both Sync. and Async. calls ...
      */
-	@WebMethod
 	@Override public String sendHTTPAccessData(HTTPAccessData data) {
         CommandHandler.execute(JSONMapper.toJSON(data), null);
 		return "CXF Web-service operation finished";
 	}
 
-	@WebMethod
 	@Override
 	public Response<SendHTTPAccessDataResponse> sendHTTPAccessDataAsync(HTTPAccessData arg0) {
 		return null;
 	}
 
-	@WebMethod
 	@Override
 	public Future<?> sendHTTPAccessDataAsync(HTTPAccessData data, AsyncHandler<SendHTTPAccessDataResponse> asyncHandler) {
 		return null;
