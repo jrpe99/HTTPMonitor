@@ -9,7 +9,8 @@ import javax.ejb.Singleton;
 import javax.enterprise.concurrent.ManagedScheduledExecutorService;
 
 /**
- * The service is a Singleton session bean.
+ * The service is a Singleton session bean. Used when the application is running in 
+ * a full JEE7 server.
  * 
  * <p> See {@link dk.jrpe.monitor.service.MonitorService}
  * 

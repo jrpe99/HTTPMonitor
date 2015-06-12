@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * The service is a Singleton bean, which is used if the application 
- * is running in a container not supporting full JEE7.
+ * is running in server not supporting full JEE7.
  * 
  * <p> See {@link dk.jrpe.monitor.service.MonitorService}
  * 
