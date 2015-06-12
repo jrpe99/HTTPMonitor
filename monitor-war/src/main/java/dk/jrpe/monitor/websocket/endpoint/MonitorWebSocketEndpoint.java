@@ -36,7 +36,7 @@ public class MonitorWebSocketEndpoint {
 
 	/**
 	 * Inject the monitoring service (Singleton) when the WebSocket end-point is
-	 * created.
+	 * created, if the application is running in server supporting full JEE7.
 	 */
 	@EJB
 	private EnterpriseMonitorService enterpriseMonitorService;
