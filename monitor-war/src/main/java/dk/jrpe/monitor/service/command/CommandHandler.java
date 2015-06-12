@@ -34,10 +34,10 @@ public class CommandHandler {
          * The following commands, are for sending HTTP access data to the monitoring 
          * application. 
          */
-        SEND_HTTP_SUCCESS_DATA((cmdHandler -> { new SendHttpSuccessDataCmd().execute(cmdHandler); })),
-        SEND_HTTP_SUCCESS_PER_MINUTE_DATA((cmdHandler -> { new SendHttpSuccessPerMinuteDataCmd().execute(cmdHandler); })),
-        SEND_HTTP_FAILED_DATA((cmdHandler -> { new SendHttpFailedDataCmd().execute(cmdHandler); })),
-        SEND_HTTP_FAILED_PER_MINUTE_DATA((cmdHandler -> { new SendHttpFailedPerMinuteDataCmd().execute(cmdHandler); }));
+        SEND_HTTP_SUCCESS_DATA((cmdHandler -> new SendHttpSuccessDataCmd().execute(cmdHandler))),
+        SEND_HTTP_SUCCESS_PER_MINUTE_DATA((cmdHandler -> new SendHttpSuccessPerMinuteDataCmd().execute(cmdHandler))),
+        SEND_HTTP_FAILED_DATA((cmdHandler -> new SendHttpFailedDataCmd().execute(cmdHandler))),
+        SEND_HTTP_FAILED_PER_MINUTE_DATA((cmdHandler -> new SendHttpFailedPerMinuteDataCmd().execute(cmdHandler)));
         
         
         private final Consumer<CommandHandler> cmdHandler;

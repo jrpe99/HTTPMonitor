@@ -26,7 +26,7 @@ public class JSONMapper<T> {
     
     public static JsonHTTPAccessTO toJsonHTTPAccessTO(String json) {
         try {
-            return (JsonHTTPAccessTO)jsonMapper.readValue(json, JsonHTTPAccessTO.class);
+            return jsonMapper.readValue(json, JsonHTTPAccessTO.class);
         } catch (IOException ex) {
             Logger.getLogger(JSONMapper.class.getName()).log(Level.SEVERE, null, ex);
         }

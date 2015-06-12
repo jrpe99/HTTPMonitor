@@ -13,10 +13,10 @@ import java.util.function.Function;
  * @author Jörgen Persson
  */
 public enum ChartEnum {
-    PIE_SUCCESS(1, (list -> {return PieChartJSONAdapter.httpSuccessToJSON(list);})),
-    PIE_FAILED(2, (list -> {return PieChartJSONAdapter.httpFailureToJSON(list);})),
-    RADAR_SUCCESS(3, (list -> {return RadarChartJSONAdapter.httpSuccessToJSON(list);})),
-    RADAR_FAILED(4, (list -> {return RadarChartJSONAdapter.httpFailureToJSON(list);})),
+    PIE_SUCCESS(1, (PieChartJSONAdapter::httpSuccessToJSON)),
+    PIE_FAILED(2, (list -> PieChartJSONAdapter.httpFailureToJSON(list))),
+    RADAR_SUCCESS(3, (list -> RadarChartJSONAdapter.httpSuccessToJSON(list))),
+    RADAR_FAILED(4, (list -> RadarChartJSONAdapter.httpFailureToJSON(list))),
     LINE_SUCCESS_AND_FAILED(5, (list -> {
         // Does not have the same interface yet ...
         throw new UnsupportedOperationException();

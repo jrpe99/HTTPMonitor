@@ -38,11 +38,9 @@ public class InMemoryDataSourceTest {
 		httpSuccessList = this.source.getHttpSuccess();
 		assertEquals(3, httpSuccessList.size());
 
-		for (HTTPAccessTO to : httpSuccessList) {
-			if(to.getIpAddress().equals("100")) {
-				assertEquals(new Long("2"), to.getRequests());
-			}
-		}
+		httpSuccessList.stream().filter(to -> to.getIpAddress().equals("100")).forEach(to -> {
+			assertEquals(new Long("2"), to.getRequests());
+		});
 	}
 
 	@Test
@@ -60,11 +58,9 @@ public class InMemoryDataSourceTest {
 		httpFailedList = this.source.getHttpFailed();
 		assertEquals(3, httpFailedList.size());
 
-		for (HTTPAccessTO to : httpFailedList) {
-			if(to.getIpAddress().equals("100")) {
-				assertEquals(new Long("2"), to.getRequests());
-			}
-		}
+		httpFailedList.stream().filter(to -> to.getIpAddress().equals("100")).forEach(to -> {
+			assertEquals(new Long("2"), to.getRequests());
+		});
 	}
 
 	@Test

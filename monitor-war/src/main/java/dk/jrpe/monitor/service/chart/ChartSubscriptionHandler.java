@@ -25,9 +25,7 @@ public class ChartSubscriptionHandler {
 	 * Strings must match as defined in {@link dk.jrpe.monitor.service.chart.ChartEnum} 
 	 */
 	public static void subscribe(Session session, List<String> chartTypes) {
-        synchronized(session) {
-            session.getUserProperties().put(MonitorConstant.CHART_SUBSCRIPTION, subscribe(chartTypes));
-        }
+        session.getUserProperties().put(MonitorConstant.CHART_SUBSCRIPTION, subscribe(chartTypes));
     }
     
 	/**
@@ -37,9 +35,7 @@ public class ChartSubscriptionHandler {
 	 */
     private static Set<ChartEnum> subscribe(List<String> chartTypes) {
         List<ChartEnum> list = new ArrayList<>();
-        chartTypes.stream().forEach((chartName) -> {
-            list.add(ChartEnum.valueOf(chartName));
-        });
+        chartTypes.stream().forEach((chartName) -> list.add(ChartEnum.valueOf(chartName)));
         return EnumSet.copyOf(list);
     }
 }
