@@ -1,0 +1,6 @@
+https://abhirockzz.wordpress.com/2014/07/29/java-ee-asynchronous-constructs-and-capabilities/
+
+JEE7
+- EJB 3.1 Asynchronous session bean
+- Servlet 3.0 Asynchronous
+- Concurrency Utilities 1.0 javax.enterprise.concurrent.ManagedExecutorService

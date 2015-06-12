@@ -6,6 +6,7 @@ import dk.jrpe.monitor.service.command.CommandHandler;
 import dk.jrpe.monitor.task.HttpRequestsMonitorTask;
 import dk.jrpe.monitor.task.HttpRequestsPerMinuteMonitorTask;
 import dk.jrpe.monitor.task.MonitoringTask;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -14,6 +15,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.annotation.Resource;
+import javax.enterprise.concurrent.ManagedScheduledExecutorService;
 import javax.websocket.Session;
 
 /**
@@ -30,7 +34,10 @@ public final class MonitoringService {
         static final MonitoringService instance = new MonitoringService();
     }
     
-    private ScheduledExecutorService monitorTimer = null;
+    @Resource
+    private ManagedScheduledExecutorService managedTaskScheduler;
+    
+    private ScheduledExecutorService taskScheduler = null;
     
     private final List<MonitoringTask> monitoringTaskList = new ArrayList<>();
     private final List<Session> sessionList = new CopyOnWriteArrayList<>();
@@ -89,7 +96,7 @@ public final class MonitoringService {
      * Stop the monitoring timer.
      */
     public void stop() {
-    	this.monitorTimer.shutdown();
+    	this.taskScheduler.shutdown();
     	this.monitoringTaskList.stream().forEach((monitoringTask) -> {
             try {
                 monitoringTask.cancel();
@@ -103,9 +110,13 @@ public final class MonitoringService {
      * Schedule all monitoring tasks.
      */
     private void start() {
-        this.monitorTimer = Executors.newScheduledThreadPool(monitoringTaskList.size());
+    	if(this.managedTaskScheduler != null) {
+    		this.taskScheduler = this.managedTaskScheduler;
+    	} else {
+            this.taskScheduler = Executors.newScheduledThreadPool(monitoringTaskList.size());
+    	}
         this.monitoringTaskList.stream().forEach((monitoringTask) -> {
-        	this.monitorTimer.scheduleWithFixedDelay(monitoringTask, 0, monitoringTask.getDelay(), TimeUnit.MILLISECONDS);
+        	this.taskScheduler.scheduleWithFixedDelay(monitoringTask, 0, monitoringTask.getDelay(), TimeUnit.MILLISECONDS);
         });
     }
 }
