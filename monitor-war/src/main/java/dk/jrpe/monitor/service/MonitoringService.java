@@ -13,32 +13,47 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
+import javax.ejb.ConcurrencyManagement;
+import javax.ejb.ConcurrencyManagementType;
+import javax.ejb.Singleton;
 import javax.enterprise.concurrent.ManagedScheduledExecutorService;
 import javax.websocket.Session;
 
 /**
- * General purpose monitoring service.
- * 
- * The service is a Singelton. It is responsible for creating monitor tasks,
+ * The service is a Singleton session bean. It is responsible for creating monitor tasks,
  * which are added to a monitor task list. When all tasks have been added
  * they are scheduled (started) using a ScheduledExecutorService.
  * 
  * @author Jörgen Persson
  */
-public final class MonitoringService {
-    private static class InstanceHolder {
-        static final MonitoringService instance = new MonitoringService();
-    }
-    
+
+@ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
+@Singleton
+public class MonitoringService {
+    /**
+     * If the application is running in a full JEE7 container,
+     * a managed scheduled executor will be used, which will
+     * be injected by the container.
+     */
     @Resource
     private ManagedScheduledExecutorService managedTaskScheduler;
-    
+
+    /**
+     * Otherwise a non-managed will be used.
+     */
     private ScheduledExecutorService taskScheduler = null;
-    
+
+    /**
+     * Indicated is the service has been started.
+     * The service is started when the first session 
+     * is added.
+     */
+    private final AtomicBoolean serviceStarted = new AtomicBoolean(false);
     private final List<MonitoringTask> monitoringTaskList = new ArrayList<>();
     private final List<Session> sessionList = new CopyOnWriteArrayList<>();
 
@@ -47,23 +62,10 @@ public final class MonitoringService {
      * {@code monitoringTaskList}
      * <p> Start all tasks.
      */
-    private MonitoringService() {
-        try {
-            HttpAccessDataSource dataSource = DataSourceFactory.get();
-            this.monitoringTaskList.add(new HttpRequestsMonitorTask(dataSource, this.sessionList, 1000));
-            this.monitoringTaskList.add(new HttpRequestsPerMinuteMonitorTask(dataSource, this.sessionList, 1000));
-            start();
-        } catch (Exception e) {
-            Logger.getLogger(MonitoringService.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
-    
-    /**
-     * Return the instance of the monitoring service.
-     * @return monitoring service instance
-     */
-    public static MonitoringService getInstance() {
-        return InstanceHolder.instance;
+    public MonitoringService() {
+        HttpAccessDataSource dataSource = DataSourceFactory.get();
+        this.monitoringTaskList.add(new HttpRequestsMonitorTask(dataSource, this.sessionList, 1000));
+        this.monitoringTaskList.add(new HttpRequestsPerMinuteMonitorTask(dataSource, this.sessionList, 1000));
     }
     
     /**
@@ -72,6 +74,9 @@ public final class MonitoringService {
      * @param session the WebSocket session
      */
     public void addSession(Session session) {
+        if(!this.serviceStarted.getAndSet(true)) {
+            start();
+        }
     	this.sessionList.add(session);
     }
     
@@ -111,7 +116,7 @@ public final class MonitoringService {
      */
     private void start() {
     	if(this.managedTaskScheduler != null) {
-    		this.taskScheduler = this.managedTaskScheduler;
+            this.taskScheduler = this.managedTaskScheduler;
     	} else {
             this.taskScheduler = Executors.newScheduledThreadPool(monitoringTaskList.size());
     	}

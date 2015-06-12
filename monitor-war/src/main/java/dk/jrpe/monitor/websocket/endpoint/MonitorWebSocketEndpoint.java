@@ -1,6 +1,7 @@
 package dk.jrpe.monitor.websocket.endpoint;
 
 import dk.jrpe.monitor.service.MonitoringService;
+import javax.ejb.EJB;
 import javax.websocket.CloseReason;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -21,7 +22,8 @@ public class MonitorWebSocketEndpoint {
     /**
      * Create the monitoring service when the WebSocket end-point is created.
      */
-    private static final MonitoringService monitorService = MonitoringService.getInstance();
+    @EJB
+    private MonitoringService monitorService;
             
     /**
      * When a new client connects, add the client session to the
@@ -31,7 +33,7 @@ public class MonitorWebSocketEndpoint {
      */
     @OnOpen
     public void handleOpenConnection(Session session) {
-        monitorService.addSession(session);
+        this.monitorService.addSession(session);
     }
 
     /**
@@ -43,7 +45,7 @@ public class MonitorWebSocketEndpoint {
      */
     @OnClose
     public void handleClosedConnection(Session session, CloseReason reason) {
-        monitorService.removeSession(session);
+        this.monitorService.removeSession(session);
     }
 
     /**
@@ -53,6 +55,6 @@ public class MonitorWebSocketEndpoint {
      */
     @OnMessage
     public void handleMessage(String json, Session session){
-        monitorService.executeCommand(json, session);
+        this.monitorService.executeCommand(json, session);
     }
 }
