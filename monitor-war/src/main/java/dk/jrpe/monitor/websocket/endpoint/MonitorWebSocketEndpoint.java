@@ -19,67 +19,64 @@ import dk.jrpe.monitor.service.StandardMonitorService;
  * 
  * @author Jörgen Persson
  */
-@ServerEndpoint(
-    value = "/monitor"
-)
+@ServerEndpoint(value = "/monitor")
 public class MonitorWebSocketEndpoint {
-    /**
-     * Indicated is the service has been started.
-     * The service is started when the first session 
-     * is added.
-     */
-    private static final AtomicBoolean serviceInitialized = new AtomicBoolean(false);
-    
+	/**
+	 * Indicated is the service has been started. The service is started when
+	 * the first session is added.
+	 */
+	private static final AtomicBoolean serviceInitialized = new AtomicBoolean(false);
 
-    private static MonitorService monitorService;
+	private static MonitorService monitorService;
 
-    /**
-     * Inject the monitoring service (Singleton) when the WebSocket end-point is created.
-     */
-    @EJB
-    private EnterpriseMonitorService enterpriseMonitorService;
+	/**
+	 * Inject the monitoring service (Singleton) when the WebSocket end-point is
+	 * created.
+	 */
+	@EJB
+	private EnterpriseMonitorService enterpriseMonitorService;
 
-    
-    /**
-     * When a new client connects, add the client session to the
-     * monitoring service.
-     * 
-     * @param session
-     */
-    @OnOpen
-    public void handleOpenConnection(Session session) {
-        synchronized(serviceInitialized) {
-            if(!serviceInitialized.getAndSet(true)) {
-                    if(enterpriseMonitorService == null) {
-                            monitorService = StandardMonitorService.getInstance();
-                    } else {
-                            monitorService = enterpriseMonitorService;
-                    }
-                    monitorService.start();
-            }
-            monitorService.addSession(session);
-        }
-    }
+	/**
+	 * When a new client connects, add the client session to the monitoring
+	 * service.
+	 * 
+	 * @param session
+	 */
+	@OnOpen
+	public void handleOpenConnection(Session session) {
+		synchronized (serviceInitialized) {
+			if (!serviceInitialized.getAndSet(true)) {
+				if (enterpriseMonitorService == null) {
+					monitorService = StandardMonitorService.getInstance();
+				} else {
+					monitorService = enterpriseMonitorService;
+				}
+				monitorService.start();
+			}
+			monitorService.addSession(session);
+		}
+	}
 
-    /**
-     * When a client disconnects, remove the client session from the
-     * monitoring service.
-     *
-     * @param session
-     * @param reason
-     */
-    @OnClose
-    public void handleClosedConnection(Session session, CloseReason reason) {
-        monitorService.removeSession(session);
-    }
+	/**
+	 * When a client disconnects, remove the client session from the monitoring
+	 * service.
+	 *
+	 * @param session
+	 * @param reason
+	 */
+	@OnClose
+	public void handleClosedConnection(Session session, CloseReason reason) {
+		monitorService.removeSession(session);
+	}
 
-    /**
-     * Handle commands sent from a client.
-     * @param json
-     * @param session
-     */
-    @OnMessage
-    public void handleMessage(String json, Session session){
-        monitorService.executeCommand(json, session);
-    }
+	/**
+	 * Handle commands sent from a client.
+	 * 
+	 * @param json
+	 * @param session
+	 */
+	@OnMessage
+	public void handleMessage(String json, Session session) {
+		monitorService.executeCommand(json, session);
+	}
 }
