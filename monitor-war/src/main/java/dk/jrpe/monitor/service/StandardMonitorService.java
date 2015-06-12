@@ -26,8 +26,8 @@ public final class StandardMonitorService extends MonitorService {
 
     public void start() {
         this.taskScheduler = Executors.newScheduledThreadPool(monitoringTaskList.size());
-        this.monitoringTaskList.stream().forEach((monitoringTask) -> {
-        	this.taskScheduler.scheduleWithFixedDelay(monitoringTask, 0, monitoringTask.getDelay(), TimeUnit.MILLISECONDS);
-        });
+        this.monitoringTaskList.stream().forEach((monitoringTask) -> 
+        	this.taskScheduler.scheduleWithFixedDelay(monitoringTask, 0, monitoringTask.getDelay(), TimeUnit.MILLISECONDS)
+        );
     }
 }

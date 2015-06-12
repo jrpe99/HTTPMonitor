@@ -34,6 +34,7 @@ public class EnterpriseMonitorService extends MonitorService {
     
     public void start() {
         this.monitoringTaskList.stream().forEach((monitoringTask) ->
-                this.managedTaskScheduler.scheduleWithFixedDelay(monitoringTask, 0, monitoringTask.getDelay(), TimeUnit.MILLISECONDS));
+            this.managedTaskScheduler.scheduleWithFixedDelay(monitoringTask, 0, monitoringTask.getDelay(), TimeUnit.MILLISECONDS)
+        );
     }
 }
