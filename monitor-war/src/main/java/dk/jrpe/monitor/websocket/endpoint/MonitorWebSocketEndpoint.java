@@ -21,7 +21,6 @@ import dk.jrpe.monitor.service.StandardMonitorService;
  * {@code monitorService} has been initialized. If not, it will use either an
  * enterprise service for a full JEE7 server (like Glassfish 4.1) or a standard service for a server not
  * supporting full JEE7 (like Tomcat 8).
- * a 
  * 
  * @author Jörgen Persson
  */
