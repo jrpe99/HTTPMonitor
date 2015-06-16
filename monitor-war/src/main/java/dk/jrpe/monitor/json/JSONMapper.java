@@ -1,10 +1,13 @@
 package dk.jrpe.monitor.json;
 
 import dk.jrpe.monitor.db.httpaccess.to.JsonHTTPAccessTO;
+import dk.jrpe.monitor.db.httpaccess.to.MongoDBHTTPAccessTO;
 import dk.jrpe.monitor.service.command.Command;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
@@ -27,6 +30,15 @@ public class JSONMapper<T> {
     public static JsonHTTPAccessTO toJsonHTTPAccessTO(String json) {
         try {
             return jsonMapper.readValue(json, JsonHTTPAccessTO.class);
+        } catch (IOException ex) {
+            Logger.getLogger(JSONMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static MongoDBHTTPAccessTO toMongoDBHTTPAccessTO(String json) {
+        try {
+            return jsonMapper.readValue(json, MongoDBHTTPAccessTO.class);
         } catch (IOException ex) {
             Logger.getLogger(JSONMapper.class.getName()).log(Level.SEVERE, null, ex);
         }

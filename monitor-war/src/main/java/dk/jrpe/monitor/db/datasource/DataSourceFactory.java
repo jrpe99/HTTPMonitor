@@ -2,6 +2,7 @@ package dk.jrpe.monitor.db.datasource;
 
 import dk.jrpe.monitor.db.datasource.cassandra.CassandraDataSource;
 import dk.jrpe.monitor.db.datasource.inmemory.InMemoryDataSource;
+import dk.jrpe.monitor.db.datasource.mongodb.MongoDBDataSource;
 
 /**
  * Singelton.
@@ -27,7 +28,8 @@ public final class DataSourceFactory {
 		/*
 		 * Init possibly from property file
 		 */
-		this.dataSource = Type.IN_MEMORY.get();
+		this.dataSource = Type.MONGODB.get();
+		//this.dataSource = Type.IN_MEMORY.get();
 		//this.dataSource = Type.CASSANDRA.get();
 	}
 
@@ -52,7 +54,9 @@ public final class DataSourceFactory {
 	 * Enumeration containing all possible data-sources for HTTP access data 
 	 */
 	public enum Type {
-	    CASSANDRA(new CassandraDataSource()), IN_MEMORY(new InMemoryDataSource());
+	    CASSANDRA(new CassandraDataSource()), 
+	    IN_MEMORY(new InMemoryDataSource()),
+	    MONGODB(new MongoDBDataSource());
 	    
 	    private final HttpAccessDataSource dataSource;
 	    Type(HttpAccessDataSource dataSource) {
