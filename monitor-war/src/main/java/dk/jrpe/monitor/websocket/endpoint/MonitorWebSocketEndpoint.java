@@ -54,10 +54,10 @@ public class MonitorWebSocketEndpoint {
 	public void handleOpenConnection(Session session) {
 		synchronized (serviceInitialized) {
 			if (!serviceInitialized.getAndSet(true)) {
-				if (enterpriseMonitorService == null) {
+				if (this.enterpriseMonitorService == null) {
 					monitorService = StandardMonitorService.getInstance();
 				} else {
-					monitorService = enterpriseMonitorService;
+					monitorService = this.enterpriseMonitorService;
 				}
 				monitorService.start();
 			}
