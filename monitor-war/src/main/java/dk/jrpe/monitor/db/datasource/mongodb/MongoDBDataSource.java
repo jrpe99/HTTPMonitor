@@ -37,7 +37,7 @@ public class MongoDBDataSource implements HttpAccessDataSource {
     }
 
     @Override public void updateHttpSuccess(HTTPAccessTO to) {
-        this.dataBase.updateHttpSuccess(to);
+        this.mongoDb.updateHttpSuccess(to);
     }
 
     @Override public void updateHttpSuccessPerMinute(HTTPAccessTO to) {

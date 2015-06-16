@@ -10,14 +10,16 @@ import java.util.stream.Collectors;
 import org.bson.Document;
 
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import dk.jrpe.monitor.db.httpaccess.to.HTTPAccessTO;
 import dk.jrpe.monitor.db.httpaccess.to.JsonHTTPAccessTO;
-import dk.jrpe.monitor.db.httpaccess.to.MongoDBHTTPAccessTO;
 import dk.jrpe.monitor.json.JSONMapper;
 import dk.jrpe.monitor.source.httpaccess.to.HTTPAccessTOFactory;
+import static com.mongodb.client.model.Filters.*;
+
 
 /**
  * Singelton<br>
@@ -105,8 +107,16 @@ public class MongoDBDAO {
     }
 
     public void updateHttpSuccess(HTTPAccessTO to) {
-
-    }
+    	MongoCollection<Document> collection = db.getCollection("httpsuccess");
+    	Document doc = collection.find(eq("ipAddress", to.getIpAddress())).first();
+    	if(doc == null) {
+    		collection.insertOne(Document.parse(JSONMapper.toJSON(to)));
+    	} else {
+        	Integer requests = doc.getInteger("requests");
+        	doc.replace("requests", ++requests);
+	    	collection.replaceOne(eq("_id", doc.get("_id")), doc);
+    	}
+	}
 
     public void updateHttpSuccessPerMinute(HTTPAccessTO to) {
         Long requests = this.httpSuccessPerMinute.putIfAbsent(to.getDateToMinute(), new Long("1"));
