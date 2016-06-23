@@ -10,6 +10,8 @@ import java.util.List;
 /**
  * Data source for the a MongoDB database.
  * @author Jörgen Persson
+ *
+ * NOTE, MongoDB implementation not finished. Now a combination of MongoDB and in-memory
  */
 public class MongoDBDataSource implements HttpAccessDataSource {
 

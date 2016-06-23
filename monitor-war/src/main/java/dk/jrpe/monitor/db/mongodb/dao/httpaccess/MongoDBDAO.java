@@ -23,10 +23,12 @@ import static com.mongodb.client.model.Filters.*;
 
 /**
  * Singelton<br>
- * Implementation of an in-memory database for HTTP access data with 
+ * Implementation of an in- database for HTTP access data with
  * the same "schema" as the Cassandra database schema.<br>
  * See {@link dk.jrpe.monitor.db.cassandra.schema.HTTPAccessSchema}
  * @author Jörgen Persson
+ *
+ * NOTE, MongoDB implementation not finished
  */
 public class MongoDBDAO {
     private static class InstanceHolder {
