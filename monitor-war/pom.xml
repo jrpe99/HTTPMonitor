@@ -38,6 +38,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
+					<warFile>target/monitor.war</warFile>
 					<url>http://localhost:8080/manager/text</url>
 					<path>/monitor</path>
 					<username>tomcat</username>
