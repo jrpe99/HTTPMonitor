@@ -69,30 +69,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>dk.jrpe.monitor</groupId>
-                <artifactId>monitor-ejb-remote</artifactId>
-                <version>${project.version}</version>
-                <type>jar</type>
-            </dependency>
-            <dependency>
-                <groupId>dk.jrpe.monitor</groupId>
-                <artifactId>monitor-ejb</artifactId>
-                <version>${project.version}</version>
-                <type>jar</type>
-            </dependency>
-            <dependency>
-                <groupId>dk.jrpe.monitor</groupId>
-                <artifactId>monitor-ws</artifactId>
-                <version>${project.version}</version>
-                <type>jar</type>
-            </dependency>
-            <dependency>
-                <groupId>dk.jrpe.monitor</groupId>
-                <artifactId>monitor-war</artifactId>
-                <version>${project.version}</version>
-                <type>war</type>
-            </dependency>
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>

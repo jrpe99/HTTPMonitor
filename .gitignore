@@ -4,3 +4,7 @@
 /monitor-ejb/target/
 /montor-ejb-remote/target/
 /WebApplication1/nbproject/private/
+/target/
+/test/target/
+/monitor-ejb-remote/target/
+/monitor-ejb-remote/test/target/
