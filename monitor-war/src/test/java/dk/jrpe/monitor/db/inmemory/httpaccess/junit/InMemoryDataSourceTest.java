@@ -20,7 +20,7 @@ public class InMemoryDataSourceTest {
 	@Before
 	public void setUp() throws Exception {
 		DataSourceFactory.set(DataSourceFactory.Type.IN_MEMORY);
-		this.source = DataSourceFactory.get();
+		this.source = DataSourceFactory.Type.IN_MEMORY.get();
 	}
 
 	@Test

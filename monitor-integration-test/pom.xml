@@ -16,11 +16,18 @@
         <embeddables>**/IntegrationStories.java</embeddables>
         <ignore.failure.in.stories>true</ignore.failure.in.stories>
         <meta.filter></meta.filter>
-        <threads>2</threads>
+        <threads>1</threads>
         <story.timeout.in.secs>3</story.timeout.in.secs>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>dk.jrpe.monitor</groupId>
+            <artifactId>monitor-war</artifactId>
+            <version>${project.version}</version>
+            <classifier>classes</classifier>
+        </dependency>
+
         <dependency>
             <groupId>org.jbehave</groupId>
             <artifactId>jbehave-core</artifactId>

@@ -19,6 +19,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
+                    <attachClasses>true</attachClasses>
                     <warName>monitor</warName>
                     <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                     <webResources>

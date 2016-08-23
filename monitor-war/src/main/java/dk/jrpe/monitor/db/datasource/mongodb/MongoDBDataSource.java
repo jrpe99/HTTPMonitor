@@ -16,7 +16,7 @@ import java.util.List;
 public class MongoDBDataSource implements HttpAccessDataSource {
 
     private final InMemoryDataBase dataBase = InMemoryDataBase.getInstance();
-    private final MongoDBDAO mongoDb = MongoDBDAO.getInstance();
+    private MongoDBDAO mongoDb;
 
     @Override public List<HTTPAccessTO> getHttpSuccess() {
         return this.mongoDb.getHttpSuccess();
@@ -55,7 +55,7 @@ public class MongoDBDataSource implements HttpAccessDataSource {
     }
 
     @Override public void open() {
-        // NOT USED
+        this.mongoDb = MongoDBDAO.getInstance();
     }
 
     @Override public void close() throws Exception {

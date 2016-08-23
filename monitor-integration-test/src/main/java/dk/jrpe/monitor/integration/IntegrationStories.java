@@ -1,6 +1,6 @@
 package dk.jrpe.monitor.integration;
 
-import dk.jrpe.monitor.integration.inmemory.steps.HttpSuccessStep;
+import dk.jrpe.monitor.integration.inmemory.steps.HttpSuccessSteps;
 import org.apache.commons.lang3.StringUtils;
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
@@ -35,7 +35,7 @@ public class IntegrationStories extends JUnitStories {
                 .useThreads(1)
                 .useStoryTimeouts("7secs")
                 .doFailOnStoryTimeout(false);
-        embedder.useMetaFilters(Arrays.asList("groovy: story_path ==~ /.*long.*/"));
+        //embedder.useMetaFilters(Arrays.asList("groovy: story_path ==~ /.*long.*/"));
         embedder.useTimeoutParsers(new CustomTimeoutParser());
     }
 
@@ -56,7 +56,7 @@ public class IntegrationStories extends JUnitStories {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new HttpSuccessStep());
+        return new InstanceStepsFactory(configuration(), new HttpSuccessSteps());
     }
 
     @Override
