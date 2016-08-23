@@ -36,7 +36,13 @@ public class HttpSuccessSteps {
     @Then("the data is stored in the database $ip")
     public void dataIsStored(String ip) {
         List<HTTPAccessTO> httpSuccessList = this.source.getHttpSuccess();
-
+        /*
+        try {
+            Thread.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        */
         assertEquals(3, httpSuccessList.size());
 
         httpSuccessList.stream().filter(to -> to.getIpAddress().equals(ip)).forEach(to -> {
@@ -44,12 +50,15 @@ public class HttpSuccessSteps {
         });
     }
 
-    @Then ("new statistics can be fetched and JSON generated")
-    public void getJSONStatistics() {
+    @Then ("new statistics can be fetched for ip $ip and JSON generated")
+    public void getJSONStatistics(String ip) {
         HttpRequestsMonitorTask task = new HttpRequestsMonitorTask(this.source, null, 1);
-        ChartEnum.PIE_SUCCESS.toJSON(this.source.getHttpSuccess());
+        List<HTTPAccessTO> successRowList = SortHelper.onRequestCount(this.source.getHttpSuccess());
+        ChartEnum.PIE_SUCCESS.toJSON(successRowList);
         String json = ChartEnum.PIE_SUCCESS.getJson();
-        String expected = "{        \"value\": 2,        \"color\":\"#00a8FA\",        \"highlight\": \"#FF5A5E\",        \"label\": \"100.23.34.100\"    }";
+        String expected = "{        \"value\": 2,        \"color\":\"#0000FA\",        \"highlight\": \"#FF5A5E\",        \"label\": \""+ip+"\"    }";
+        System.out.println(json);
+        System.out.println(expected);
         assertTrue(json.indexOf(expected) != -1);
     }
 }
