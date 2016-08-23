@@ -13,6 +13,7 @@
         <module>monitor-ejb</module>
         <module>monitor-ws</module>
         <module>monitor-war</module>
+        <module>monitor-integration-test</module>
     </modules>
 
     <properties>
