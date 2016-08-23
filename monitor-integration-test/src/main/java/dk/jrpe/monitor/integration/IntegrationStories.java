@@ -1,8 +1,6 @@
-package dk.jrpe.monitor.integration.threads;
+package dk.jrpe.monitor.integration;
 
-import java.util.Arrays;
-import java.util.List;
-
+import dk.jrpe.monitor.integration.inmemory.steps.HttpSuccessStep;
 import org.apache.commons.lang3.StringUtils;
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
@@ -17,15 +15,17 @@ import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
-import dk.jrpe.monitor.integration.threads.steps.ThreadsSteps;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
 
-public class ThreadsStories extends JUnitStories {
+public class IntegrationStories extends JUnitStories {
 
-    public ThreadsStories() {
+    public IntegrationStories() {
         Embedder embedder = configuredEmbedder();
         embedder.embedderControls()
                 .doGenerateViewAfterStories(true)
@@ -56,7 +56,7 @@ public class ThreadsStories extends JUnitStories {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new ThreadsSteps());
+        return new InstanceStepsFactory(configuration(), new HttpSuccessStep());
     }
 
     @Override
@@ -75,6 +75,4 @@ public class ThreadsStories extends JUnitStories {
     	}
 
     }
-
-
 }
