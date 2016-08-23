@@ -8,3 +8,6 @@
 /test/target/
 /monitor-ejb-remote/target/
 /monitor-ejb-remote/test/target/
+/monitor-integration-test/target/
+*.iml
+.idea
