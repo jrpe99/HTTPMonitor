@@ -33,7 +33,7 @@ public class IntegrationStories extends JUnitStories {
                 .doIgnoreFailureInView(true)
                 .doVerboseFiltering(true)
                 .useThreads(1)
-                .useStoryTimeouts("7secs")
+                .useStoryTimeouts("120secs")
                 .doFailOnStoryTimeout(false);
         //embedder.useMetaFilters(Arrays.asList("groovy: story_path ==~ /.*long.*/"));
         embedder.useTimeoutParsers(new CustomTimeoutParser());

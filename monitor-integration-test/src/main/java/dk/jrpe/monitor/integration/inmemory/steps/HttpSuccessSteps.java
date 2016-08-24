@@ -36,14 +36,8 @@ public class HttpSuccessSteps {
     @Then("the data is stored in the database $ip")
     public void dataIsStored(String ip) {
         List<HTTPAccessTO> httpSuccessList = this.source.getHttpSuccess();
-        /*
-        try {
-            Thread.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        */
-        assertEquals(3, httpSuccessList.size());
+        int size = httpSuccessList.size();
+        assertTrue(size == 3);
 
         httpSuccessList.stream().filter(to -> to.getIpAddress().equals(ip)).forEach(to -> {
             assertEquals(new Long("2"), to.getRequests());
@@ -57,8 +51,8 @@ public class HttpSuccessSteps {
         ChartEnum.PIE_SUCCESS.toJSON(successRowList);
         String json = ChartEnum.PIE_SUCCESS.getJson();
         String expected = "{        \"value\": 2,        \"color\":\"#0000FA\",        \"highlight\": \"#FF5A5E\",        \"label\": \""+ip+"\"    }";
-        System.out.println(json);
-        System.out.println(expected);
+        //System.out.println(json);
+        //System.out.println(expected);
         assertTrue(json.indexOf(expected) != -1);
     }
 }
