@@ -53,19 +53,23 @@ public class InMemoryDataBase {
     }
     
     public List<HTTPAccessTO> getHttpSuccess() {
-        return this.httpSuccess.entrySet().stream()
-                .map((entry) -> new HTTPAccessTO.Builder()
-                        .setIPAdress(entry.getKey())
-                        .setRequests(entry.getValue()).build())
-                .collect(Collectors.toList());
+        synchronized (this.httpSuccess) {
+            return this.httpSuccess.entrySet().stream()
+                    .map((entry) -> new HTTPAccessTO.Builder()
+                            .setIPAdress(entry.getKey())
+                            .setRequests(entry.getValue()).build())
+                    .collect(Collectors.toList());
+        }
     }
 
     public List<HTTPAccessTO> getHttpFailed() {
-        return this.httpFailed.entrySet().stream()
-                .map((entry) -> new HTTPAccessTO.Builder()
-                        .setIPAdress(entry.getKey())
-                        .setRequests(entry.getValue()).build())
-                .collect(Collectors.toList());
+        synchronized (this.httpFailed) {
+            return this.httpFailed.entrySet().stream()
+                    .map((entry) -> new HTTPAccessTO.Builder()
+                            .setIPAdress(entry.getKey())
+                            .setRequests(entry.getValue()).build())
+                    .collect(Collectors.toList());
+        }
     }
 
     public List<HTTPAccessTO> getHttpSuccessPerMinute(String date, String from, String to) {
@@ -80,7 +84,8 @@ public class InMemoryDataBase {
         synchronized (this.httpSuccess) {
             Long requests = this.httpSuccess.putIfAbsent(to.getIpAddress(), new Long("1"));
             if(requests != null) {
-                this.httpSuccess.put(to.getIpAddress(), ++requests);
+                requests++;
+                this.httpSuccess.put(to.getIpAddress(), requests);
             }
         }
     }
